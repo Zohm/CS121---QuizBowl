@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D84E2F6918C4017E00940993 /* QBModifyQuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D84E2F6818C4017E00940993 /* QBModifyQuestionViewController.m */; };
+		D84E2F6B18C403A600940993 /* QBModifyQuestionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D84E2F6A18C403A600940993 /* QBModifyQuestionViewController.xib */; };
+		D86CD0EA18C7A1C5006E4910 /* QBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D86CD0E918C7A1C5006E4910 /* QBViewController.m */; };
 		D8BD76C918BAD68000A1D4FD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8BD76C818BAD68000A1D4FD /* Foundation.framework */; };
 		D8BD76CB18BAD68000A1D4FD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8BD76CA18BAD68000A1D4FD /* CoreGraphics.framework */; };
 		D8BD76CD18BAD68000A1D4FD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8BD76CC18BAD68000A1D4FD /* UIKit.framework */; };
@@ -26,6 +29,8 @@
 		D8E24D7518BB13A40083784D /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8E24D7418BB13A40083784D /* MobileCoreServices.framework */; };
 		D8E24D7818BB18AF0083784D /* QBTableMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8E24D7718BB18AF0083784D /* QBTableMenuViewController.m */; };
 		D8E24D8118BC65E40083784D /* QBCreateQuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8E24D8018BC65E40083784D /* QBCreateQuestionViewController.m */; };
+		D8E24D8418BEDC8A0083784D /* QBBrowseQuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8E24D8318BEDC8A0083784D /* QBBrowseQuestionViewController.m */; };
+		D8E24D8618BEF0350083784D /* QBCreateQuestionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8E24D8518BEF0340083784D /* QBCreateQuestionViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +44,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D84E2F6718C4017E00940993 /* QBModifyQuestionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBModifyQuestionViewController.h; sourceTree = "<group>"; };
+		D84E2F6818C4017E00940993 /* QBModifyQuestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QBModifyQuestionViewController.m; sourceTree = "<group>"; };
+		D84E2F6A18C403A600940993 /* QBModifyQuestionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QBModifyQuestionViewController.xib; sourceTree = "<group>"; };
+		D86CD0E818C7A1C5006E4910 /* QBViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBViewController.h; sourceTree = "<group>"; };
+		D86CD0E918C7A1C5006E4910 /* QBViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QBViewController.m; sourceTree = "<group>"; };
 		D8BD76C518BAD68000A1D4FD /* QuizbowlGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuizbowlGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8BD76C818BAD68000A1D4FD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D8BD76CA18BAD68000A1D4FD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -65,6 +75,9 @@
 		D8E24D7718BB18AF0083784D /* QBTableMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QBTableMenuViewController.m; sourceTree = "<group>"; };
 		D8E24D7F18BC65E40083784D /* QBCreateQuestionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBCreateQuestionViewController.h; sourceTree = "<group>"; };
 		D8E24D8018BC65E40083784D /* QBCreateQuestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QBCreateQuestionViewController.m; sourceTree = "<group>"; };
+		D8E24D8218BEDC8A0083784D /* QBBrowseQuestionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBBrowseQuestionViewController.h; sourceTree = "<group>"; };
+		D8E24D8318BEDC8A0083784D /* QBBrowseQuestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QBBrowseQuestionViewController.m; sourceTree = "<group>"; };
+		D8E24D8518BEF0340083784D /* QBCreateQuestionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QBCreateQuestionViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,8 +185,16 @@
 		D8E24D7918BC64E50083784D /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				D86CD0E818C7A1C5006E4910 /* QBViewController.h */,
+				D86CD0E918C7A1C5006E4910 /* QBViewController.m */,
+				D84E2F6718C4017E00940993 /* QBModifyQuestionViewController.h */,
+				D84E2F6818C4017E00940993 /* QBModifyQuestionViewController.m */,
+				D84E2F6A18C403A600940993 /* QBModifyQuestionViewController.xib */,
+				D8E24D8218BEDC8A0083784D /* QBBrowseQuestionViewController.h */,
+				D8E24D8318BEDC8A0083784D /* QBBrowseQuestionViewController.m */,
 				D8E24D7F18BC65E40083784D /* QBCreateQuestionViewController.h */,
 				D8E24D8018BC65E40083784D /* QBCreateQuestionViewController.m */,
+				D8E24D8518BEF0340083784D /* QBCreateQuestionViewController.xib */,
 				D8E24D7618BB18AF0083784D /* QBTableMenuViewController.h */,
 				D8E24D7718BB18AF0083784D /* QBTableMenuViewController.m */,
 				D8BD770118BB0EFC00A1D4FD /* QBLogInViewController.h */,
@@ -282,7 +303,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D84E2F6B18C403A600940993 /* QBModifyQuestionViewController.xib in Resources */,
 				D8BD76FA18BAD71300A1D4FD /* MainStoryboard.storyboard in Resources */,
+				D8E24D8618BEF0350083784D /* QBCreateQuestionViewController.xib in Resources */,
 				D8BD76D318BAD68000A1D4FD /* InfoPlist.strings in Resources */,
 				D8BD76DB18BAD68000A1D4FD /* Images.xcassets in Resources */,
 			);
@@ -305,9 +328,12 @@
 			files = (
 				D8BD76D518BAD68000A1D4FD /* main.m in Sources */,
 				D8E24D7818BB18AF0083784D /* QBTableMenuViewController.m in Sources */,
+				D8E24D8418BEDC8A0083784D /* QBBrowseQuestionViewController.m in Sources */,
 				D8BD770318BB0EFC00A1D4FD /* QBLogInViewController.m in Sources */,
 				D8E24D8118BC65E40083784D /* QBCreateQuestionViewController.m in Sources */,
+				D84E2F6918C4017E00940993 /* QBModifyQuestionViewController.m in Sources */,
 				D8BD76D918BAD68000A1D4FD /* QBAppDelegate.m in Sources */,
+				D86CD0EA18C7A1C5006E4910 /* QBViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

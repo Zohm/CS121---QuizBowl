@@ -8,22 +8,22 @@
 
 #import <Parse/Parse.h>
 #import "QBAppDelegate.h"
+#import "QBTableMenuViewController.h"
 
 @implementation QBAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     /* Comment out the following block of code if you're using storyboards
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
-    self.window.rootViewController = [[QBLaunchViewController alloc]init];
     [self.window makeKeyAndVisible]; */
     
     // ****************************************************************************
     // Fill in with your Parse and Twitter credentials. Don't forget to add your
     // Facebook id in Info.plist:
     // ****************************************************************************
+    
     [Parse setApplicationId:@"yksO4fzEEe2Pq8kdluTxptOx9qxhfeGWWHHNnmKx"
                   clientKey:@"BVG6xSRkKh85joFSPIBOIpuXJ9b9EIJN8X1xa974"];
     return YES;
