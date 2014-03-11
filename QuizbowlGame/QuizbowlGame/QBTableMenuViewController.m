@@ -135,7 +135,7 @@ typedef enum {
         [self.navigationController pushViewController:controller animated:YES];
     }
     else if (indexPath.row == QuestionLibrary) {
-        [self.navigationController pushViewController:[QBBrowseQuestionViewController initWithStoryboard] animated:YES];
+        [self.navigationController pushViewController:[QBBrowseQuestionViewController initWithStoryboard:@"MainStoryboard" andIdentifier:@"browse"] animated:YES];
     }
 }
 

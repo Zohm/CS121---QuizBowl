@@ -14,6 +14,4 @@
 
 @property (strong, nonatomic) NSArray* questionArray;
 
-+(id) initWithStoryboard;
-
 @end

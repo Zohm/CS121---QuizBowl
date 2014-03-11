@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "QBCreateQuestionViewController.h"
+#import "QBViewController.h"
 
 @interface QBTableMenuViewController : UITableViewController<QBCreateQuestionViewControllerDelegate>
 

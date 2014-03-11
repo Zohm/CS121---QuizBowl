@@ -9,6 +9,7 @@
 #import "QBBrowseQuestionViewController.h"
 #import "QBCreateQuestionViewController.h"
 #import "QBModifyQuestionViewController.h"
+#import "QBViewController.h"
 #import <Parse/Parse.h>
 
 @interface QBBrowseQuestionViewController ()
@@ -37,14 +38,6 @@
     if ([PFUser currentUser]) {
         [self loadQuestions];
     }
-}
-
-#pragma mark - Factories
-
-+(id) initWithStoryboard
-{
-    UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
-    return [storyboard instantiateViewControllerWithIdentifier:@"browse"];
 }
 
 #pragma mark - QBCreateQuestionViewControllerDelegate

@@ -27,18 +27,6 @@
     return self;
 }
 
-+(id)initWithStoryboard
-{
-    UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
-    return [storyboard instantiateViewControllerWithIdentifier:@"create"];
-}
-
--(id)addDelegate:(id)delegate
-{
-    self.delegate = delegate;
-    return self;
-}
-
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad

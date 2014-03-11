@@ -29,6 +29,9 @@
                                 <state key="normal" title="Play Offline">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="ar7-MU-XlJ" kind="modal" id="eMb-Qy-gFg"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kec-Hz-tPE">
                                 <rect key="frame" x="321" y="708" width="126" height="57"/>
@@ -49,6 +52,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kKH-5z-G11" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-784" y="-591"/>
+        </scene>
+        <!--Game View Controller-->
+        <scene sceneID="Hkh-pz-Jzx">
+            <objects>
+                <viewController id="ar7-MU-XlJ" customClass="QBGameViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5X7-25-eUK"/>
+                        <viewControllerLayoutGuide type="bottom" id="2QP-Jo-RUa"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="aLu-Dr-ppW">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wJI-sl-W1q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-784" y="-1778"/>
         </scene>
         <!--Table Menu View Controller-->
         <scene sceneID="tlZ-Vj-Nc1">
