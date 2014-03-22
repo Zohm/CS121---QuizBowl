@@ -51,42 +51,47 @@
     [super tearDown];
 }
 
--(void)testCheckAnswerDoesNotChangeAnswer
+-(void)testDoesNotChangeAnswer
 {
     [self.question doesMatchAnswer:@"house cat"];
     XCTAssertEqual(self.answer, self.question.answer, @"Checking against the answer does not change the answer");
 }
 
--(void)testEmptyStringMatchesNoAnswer
+-(void)testRejectsEmptyString
 {
     XCTAssertFalse([self.question doesMatchAnswer:@""], @"The empty string should match no answer unless it is explictly an answer.");
 }
 
--(void)testReturnNoWhenAnswerIsNil
+-(void)testReturnNoWhenNoAnswerLoaded
 {
     XCTAssertFalse([self.nilquestion doesMatchAnswer:@"cat"], @"No answer is correct if a question has no answer");
 }
 
--(void)testExactMatchShouldReturnYes
+-(void)testAcceptsExactMatches
 {
     XCTAssertTrue([self.question doesMatchAnswer:@"cat"], @"An exact match should return true");
     XCTAssertTrue([self.question doesMatchAnswer:@"feline"], @"An exact match should return true");
     XCTAssertTrue([self.question doesMatchAnswer:@"felix catus"], @"An exact match should return true");
 }
 
--(void)testMatchWithMultipartKeyShouldReturnYes
+-(void)testMatchesAnswersAgainstMultipartKeys
 {
     XCTAssertTrue([self.multipartkeyquestion doesMatchAnswer:@"P vs. NP"], @"A correct answer matched against a key with multiple parts should return yes");
     XCTAssertTrue([self.multipartkeyquestion doesMatchAnswer:@"NP vs. P"], @"A correct answer matched against a key with multiple parts should return yes");
 }
 
--(void)testAugmentedAnswerShouldReturnYes
+-(void)testIgnoresCase
+{
+    XCTAssertTrue([self.question doesMatchAnswer:@"Cat"], @"Case should be ignored");
+}
+
+-(void)testAcceptsAnswersWithAcceptableExtraParts
 {
     XCTAssertTrue([self.question doesMatchAnswer:@"house cat"], @"A match with extra acceptable words should return true");
     XCTAssertTrue([self.question doesMatchAnswer:@"domestic cat"], @"A match with extra acceptable words should return true");
 }
 
--(void)testExtraneousAnswerShouldReturnNo
+-(void)testRejectsAnswersWithExtraneousParts
 {
     XCTAssertFalse([self.question doesMatchAnswer:@"sabertooth cat"], @"A match with unacceptable extra words should return false");
 }

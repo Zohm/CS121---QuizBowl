@@ -41,7 +41,7 @@
     for (NSString* extra in extraParts) {
         NSString *pattern = [NSString stringWithFormat:@"(\\s|^)%@(\\s|$)", extra];
         NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:pattern
-                                                                               options:0
+                                                                               options:NSRegularExpressionCaseInsensitive
                                                                                  error:nil];
         NSRange match = [regex rangeOfFirstMatchInString:string
                                                  options:0
@@ -71,7 +71,7 @@
             for (NSString* keyPart in [key componentsSeparatedByString:@", "]) {
                 NSString* pattern = [NSString stringWithFormat:@"(\\s|^)%@(\\s|$)", keyPart];
                 NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:pattern
-                                                                                       options:0
+                                                                                       options:NSRegularExpressionCaseInsensitive
                                                                                          error:nil];
                 NSRange match = [regex rangeOfFirstMatchInString:extra
                                                          options:0
