@@ -12,19 +12,28 @@
 
 #pragma mark - helper functions
 
+// Returns the range of the first match of the given key to a string.
+-(NSRange)matchKey:(NSString*) key toString:(NSString*) string
+{
+    // This regular expression matches the key if the key appears in the string
+    // as its own word and not part of a word. This means the key needs to be surrounded
+    // by either whitespace or the beginning or end of the string. 
+    NSString* pattern = [NSString stringWithFormat:@"(^|\\s)%@(\\s|$)", key];
+    NSRegularExpression* regex = [NSRegularExpression regularExpressionWithPattern:pattern
+                                                                           options:NSRegularExpressionCaseInsensitive
+                                                                             error:nil];
+    return [regex rangeOfFirstMatchInString:string
+                                    options:0
+                                      range:NSMakeRange(0, [string length])];
+}
+
 // Checks that the all the parts of a key are contained in the string. Parts are separated by commas.
 -(BOOL) string:(NSString*) string matchesKey:(NSString*)key
 {
     NSArray* keyParts = [key componentsSeparatedByString:@", "];
     for (NSString* keyPart in keyParts) {
         
-        NSString* pattern = [NSString stringWithFormat:@"(^|\\s)%@(\\s|$)", keyPart];
-        NSRegularExpression* regex = [NSRegularExpression regularExpressionWithPattern:pattern
-                                                                               options:NSRegularExpressionCaseInsensitive
-                                                                                 error:nil];
-        NSRange match = [regex rangeOfFirstMatchInString:string
-                                                  options:0
-                                                    range:NSMakeRange(0, [string length])];
+        NSRange match = [self matchKey:keyPart toString:string];
         // The key part is not in the string
         if (NSEqualRanges(match, NSMakeRange(NSNotFound, 0))) {
             NSLog(@"No match");
@@ -39,13 +48,9 @@
 {
     NSArray* extraParts = [extras componentsSeparatedByString:@", "];
     for (NSString* extra in extraParts) {
-        NSString *pattern = [NSString stringWithFormat:@"(\\s|^)%@(\\s|$)", extra];
-        NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:pattern
-                                                                               options:NSRegularExpressionCaseInsensitive
-                                                                                 error:nil];
-        NSRange match = [regex rangeOfFirstMatchInString:string
-                                                 options:0
-                                                   range:NSMakeRange(0, [string length])];
+        
+        NSRange match = [self matchKey:extra toString:string];
+        
         if (!NSEqualRanges(match, NSMakeRange(NSNotFound, 0))) {
             string = [string stringByReplacingCharactersInRange:match withString:@""];
         }
@@ -69,13 +74,8 @@
         if ([self string:answer matchesKey:key]) {
             NSString* extra = answer;
             for (NSString* keyPart in [key componentsSeparatedByString:@", "]) {
-                NSString* pattern = [NSString stringWithFormat:@"(\\s|^)%@(\\s|$)", keyPart];
-                NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:pattern
-                                                                                       options:NSRegularExpressionCaseInsensitive
-                                                                                         error:nil];
-                NSRange match = [regex rangeOfFirstMatchInString:extra
-                                                         options:0
-                                                           range:NSMakeRange(0, [extra length])];
+                
+                NSRange match = [self matchKey:keyPart toString:extra];
             
                 if (!NSEqualRanges(match, NSMakeRange(NSNotFound, 0))) {
                     extra = [extra stringByReplacingCharactersInRange:match withString:@""];;
