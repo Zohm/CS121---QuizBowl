@@ -14,18 +14,39 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        CGFloat height = CGRectGetHeight(frame);
+        CGFloat width = CGRectGetWidth(frame);
+        CGFloat margin = height/5;
         // Just use frame for now, figure out dimensions later
-        self.buzzer1 = [[UIButton alloc] initWithFrame:frame];
-        self.buzzer2 = [[UIButton alloc] initWithFrame:frame];
+        self.buzzer1 = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        self.buzzer1.frame = CGRectMake(width/2, margin, 100, 100);
+        [self.buzzer1 setTitle:@"Buzzer" forState:UIControlStateNormal];
+        self.buzzer2 = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        self.buzzer2.frame = CGRectMake(width/2, height - margin, 100, 100);
+        [self.buzzer2 setTitle:@"Buzzer" forState:UIControlStateNormal];
         [self addSubview:self.buzzer1];
         [self addSubview:self.buzzer2];
         
-        self.score1 = [[UILabel alloc] initWithFrame:frame];
-        self.score2 = [[UILabel alloc] initWithFrame:frame];
+        self.score1 = [[UILabel alloc] initWithFrame:CGRectMake(width/4, height/4, width, height/4)];
+        self.score1.text = @"Points:";
+        self.score2 = [[UILabel alloc] initWithFrame:CGRectMake(width/4, height*1/3, width, height/4)];
+        self.score2.text = @"Points:";
         [self addSubview:self.score1];
         [self addSubview:self.score2];
     }
     return self;
+}
+
+-(id)hitTest:(CGPoint) point withEvent:(UIEvent *)event
+{
+    //Find the view that would normally handle this touch event.
+    UIView* hitView = (UIView*)[super hitTest:point withEvent:event];
+    
+    //Forward touch events to buttons, otherwise, let event through to next layer. 
+    if ([hitView isKindOfClass:[UIButton class]]) {
+        return hitView;
+    }
+    return NULL;
 }
 
 /*

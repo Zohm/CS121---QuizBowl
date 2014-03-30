@@ -7,12 +7,15 @@
 //
 
 #import "QBGameViewController.h"
+#import "QBHudView.h"
 
 @interface QBGameViewController ()
 
 @end
 
 @implementation QBGameViewController
+
+#pragma mark - setup
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -23,11 +26,35 @@
     return self;
 }
 
+- (void)setHud:(QBHudView*) hud
+{
+    _hud = hud;
+    // Have the buzzers in the hud select their respective actions
+    [hud.buzzer1 addTarget:self action:@selector(actionBuzzTeam1)
+          forControlEvents:UIControlEventTouchUpInside];
+    [hud.buzzer2 addTarget:self action:@selector(actionBuzzTeam2)
+          forControlEvents:UIControlEventTouchUpInside];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    
+    QBHudView *hud = [[QBHudView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    [self setHud:hud];
+    [self.view addSubview:hud];
+}
+
+
+
+-(void) actionBuzzTeam1
+{
+    self.hud.score1.text = @"Hurrah!";
+}
+
+-(void) actionBuzzTeam2
+{
+    self.hud.score2.text = @"Woot!";
 }
 
 - (void)didReceiveMemoryWarning

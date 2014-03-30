@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "QBHudView.h"
 
 @interface QBGameViewController : UIViewController
+
+@property (weak, nonatomic) QBHudView* hud;
 
 @end
