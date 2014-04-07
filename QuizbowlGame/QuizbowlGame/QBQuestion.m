@@ -10,6 +10,18 @@
 
 @implementation QBQuestion
 
+#pragma mark - factories
+
+-(instancetype) initWithPair:(NSArray *)pair
+{
+    self = [super init];
+    if (self) {
+        self.question = [pair objectAtIndex:0];
+        self.answer = [pair objectAtIndex:1];
+    }
+    return self;
+}
+
 #pragma mark - helper functions
 
 // Returns the range of the first match of the given key to a string.

@@ -3,8 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Bonus</key>
-	<dict>
-		<key>Set 5</key>
+	<array>
 		<array>
 			<string>Name these game companies for ten points each.</string>
 			<array>
@@ -29,7 +28,6 @@
 				</dict>
 			</array>
 		</array>
-		<key>Set 4</key>
 		<array>
 			<string>The muralist David Alfonso Siqueiros was involved in a plot to kill this man. For 10 points each:</string>
 			<array>
@@ -56,7 +54,6 @@
 				</dict>
 			</array>
 		</array>
-		<key>Set 3</key>
 		<array>
 			<string>Identify the following about some Millennium Prize Problems, for 10 points each.</string>
 			<array>
@@ -81,7 +78,6 @@
 				</dict>
 			</array>
 		</array>
-		<key>Set 2</key>
 		<array>
 			<string>By channelling the power of souls, he brought unprecedented prosperity to his realm. That is, until a colorless deep fog spread across the land. For ten points each:</string>
 			<array>
@@ -106,7 +102,6 @@
 				</dict>
 			</array>
 		</array>
-		<key>Set 1</key>
 		<array>
 			<string>This man’s nephew, Perdix, was turned into a partridge after he threw Perdix off a cliff in a fit of jealousy. For 10 points each:</string>
 			<array>
@@ -137,7 +132,7 @@
 				</dict>
 			</array>
 		</array>
-	</dict>
+	</array>
 	<key>Toss Up</key>
 	<array>
 		<array>

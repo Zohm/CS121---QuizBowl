@@ -18,4 +18,10 @@
 
 @property UILabel* score2;
 
+//Replace this with its own view later
+@property UILabel* timer;
+
+//Later replace this with a view for displaying questions
+@property UILabel* question; 
+
 @end

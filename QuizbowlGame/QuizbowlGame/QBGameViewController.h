@@ -11,6 +11,4 @@
 
 @interface QBGameViewController : UIViewController
 
-@property (weak, nonatomic) QBHudView* hud;
-
 @end

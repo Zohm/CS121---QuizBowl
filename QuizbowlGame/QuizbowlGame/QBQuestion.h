@@ -14,6 +14,8 @@
 
 @property NSDictionary* answer;
 
+-(instancetype) initWithPair:(NSArray* ) pair;
+
 -(BOOL) doesMatchAnswer:(NSString* ) answer;
 
 @end

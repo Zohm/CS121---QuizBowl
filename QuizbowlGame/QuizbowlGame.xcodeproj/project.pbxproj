@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D82F183D18E8D8560082710A /* QBLevelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D82F183C18E8D8560082710A /* QBLevelTest.m */; };
+		D82F184418E8ED620082710A /* test1bonus.plist in Resources */ = {isa = PBXBuildFile; fileRef = D82F184018E8DA970082710A /* test1bonus.plist */; };
+		D82F184518E8ED650082710A /* test1tossup.plist in Resources */ = {isa = PBXBuildFile; fileRef = D82F183E18E8D9000082710A /* test1tossup.plist */; };
+		D82F184718E8ED6A0082710A /* test1tossup1bonus.plist in Resources */ = {isa = PBXBuildFile; fileRef = D82F184218E8DC5C0082710A /* test1tossup1bonus.plist */; };
+		D8465BCE18E7D4EF00CAC85D /* QBGameController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8465BCD18E7D4EF00CAC85D /* QBGameController.m */; };
+		D8465BD118E7D7A100CAC85D /* QBEnterAnswerView.m in Sources */ = {isa = PBXBuildFile; fileRef = D8465BD018E7D7A100CAC85D /* QBEnterAnswerView.m */; };
+		D8465BD418E87E2100CAC85D /* QBRound.m in Sources */ = {isa = PBXBuildFile; fileRef = D8465BD318E87E2100CAC85D /* QBRound.m */; };
 		D84E2F6918C4017E00940993 /* QBModifyQuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D84E2F6818C4017E00940993 /* QBModifyQuestionViewController.m */; };
 		D84E2F6B18C403A600940993 /* QBModifyQuestionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D84E2F6A18C403A600940993 /* QBModifyQuestionViewController.xib */; };
 		D86CD0EA18C7A1C5006E4910 /* QBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D86CD0E918C7A1C5006E4910 /* QBViewController.m */; };
@@ -32,7 +39,7 @@
 		D8E24D8418BEDC8A0083784D /* QBBrowseQuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8E24D8318BEDC8A0083784D /* QBBrowseQuestionViewController.m */; };
 		D8E24D8618BEF0350083784D /* QBCreateQuestionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8E24D8518BEF0340083784D /* QBCreateQuestionViewController.xib */; };
 		D8EA3CB018C96A7E00F7F99F /* testquestions.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8EA3CAF18C96A7E00F7F99F /* testquestions.plist */; };
-		D8EA3CC518CA8CE800F7F99F /* QBRound.m in Sources */ = {isa = PBXBuildFile; fileRef = D8EA3CC418CA8CE800F7F99F /* QBRound.m */; };
+		D8EA3CC518CA8CE800F7F99F /* QBLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = D8EA3CC418CA8CE800F7F99F /* QBLevel.m */; };
 		D8EA3CC818CA8D9B00F7F99F /* QBQuestion.m in Sources */ = {isa = PBXBuildFile; fileRef = D8EA3CC718CA8D9B00F7F99F /* QBQuestion.m */; };
 		D8EA3CCA18CA95FC00F7F99F /* QBQuestionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D8EA3CC918CA95FC00F7F99F /* QBQuestionTests.m */; };
 		D8EA3CD018CC023600F7F99F /* QBHudView.m in Sources */ = {isa = PBXBuildFile; fileRef = D8EA3CCF18CC023600F7F99F /* QBHudView.m */; };
@@ -50,6 +57,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D82F183B18E8A7430082710A /* Config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
+		D82F183C18E8D8560082710A /* QBLevelTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QBLevelTest.m; sourceTree = "<group>"; };
+		D82F183E18E8D9000082710A /* test1tossup.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = test1tossup.plist; path = QuizbowlGameTests/test1tossup.plist; sourceTree = SOURCE_ROOT; };
+		D82F184018E8DA970082710A /* test1bonus.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = test1bonus.plist; path = QuizbowlGameTests/test1bonus.plist; sourceTree = SOURCE_ROOT; };
+		D82F184218E8DC5C0082710A /* test1tossup1bonus.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = test1tossup1bonus.plist; path = QuizbowlGameTests/test1tossup1bonus.plist; sourceTree = SOURCE_ROOT; };
+		D8465BCC18E7D4EF00CAC85D /* QBGameController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBGameController.h; sourceTree = "<group>"; };
+		D8465BCD18E7D4EF00CAC85D /* QBGameController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QBGameController.m; sourceTree = "<group>"; };
+		D8465BCF18E7D7A100CAC85D /* QBEnterAnswerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBEnterAnswerView.h; sourceTree = "<group>"; };
+		D8465BD018E7D7A100CAC85D /* QBEnterAnswerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QBEnterAnswerView.m; sourceTree = "<group>"; };
+		D8465BD218E87E2100CAC85D /* QBRound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBRound.h; sourceTree = "<group>"; };
+		D8465BD318E87E2100CAC85D /* QBRound.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QBRound.m; sourceTree = "<group>"; };
 		D84E2F6718C4017E00940993 /* QBModifyQuestionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBModifyQuestionViewController.h; sourceTree = "<group>"; };
 		D84E2F6818C4017E00940993 /* QBModifyQuestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QBModifyQuestionViewController.m; sourceTree = "<group>"; };
 		D84E2F6A18C403A600940993 /* QBModifyQuestionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QBModifyQuestionViewController.xib; sourceTree = "<group>"; };
@@ -85,8 +103,8 @@
 		D8E24D8318BEDC8A0083784D /* QBBrowseQuestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QBBrowseQuestionViewController.m; sourceTree = "<group>"; };
 		D8E24D8518BEF0340083784D /* QBCreateQuestionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QBCreateQuestionViewController.xib; sourceTree = "<group>"; };
 		D8EA3CAF18C96A7E00F7F99F /* testquestions.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = testquestions.plist; sourceTree = "<group>"; };
-		D8EA3CC318CA8CE800F7F99F /* QBRound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBRound.h; sourceTree = "<group>"; };
-		D8EA3CC418CA8CE800F7F99F /* QBRound.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QBRound.m; sourceTree = "<group>"; };
+		D8EA3CC318CA8CE800F7F99F /* QBLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBLevel.h; sourceTree = "<group>"; };
+		D8EA3CC418CA8CE800F7F99F /* QBLevel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QBLevel.m; sourceTree = "<group>"; };
 		D8EA3CC618CA8D9B00F7F99F /* QBQuestion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBQuestion.h; sourceTree = "<group>"; };
 		D8EA3CC718CA8D9B00F7F99F /* QBQuestion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QBQuestion.m; sourceTree = "<group>"; };
 		D8EA3CC918CA95FC00F7F99F /* QBQuestionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QBQuestionTests.m; sourceTree = "<group>"; };
@@ -159,6 +177,7 @@
 		D8BD76CE18BAD68000A1D4FD /* QuizbowlGame */ = {
 			isa = PBXGroup;
 			children = (
+				D82F183B18E8A7430082710A /* Config.h */,
 				D8BD76D718BAD68000A1D4FD /* QBAppDelegate.h */,
 				D8BD76D818BAD68000A1D4FD /* QBAppDelegate.m */,
 				D8BD76F918BAD71300A1D4FD /* MainStoryboard.storyboard */,
@@ -186,6 +205,7 @@
 			children = (
 				D8BD76ED18BAD68000A1D4FD /* QuizbowlGameTests.m */,
 				D8EA3CC918CA95FC00F7F99F /* QBQuestionTests.m */,
+				D82F183C18E8D8560082710A /* QBLevelTest.m */,
 				D8BD76E818BAD68000A1D4FD /* Supporting Files */,
 			);
 			path = QuizbowlGameTests;
@@ -229,10 +249,12 @@
 		D8E24D7A18BC64F30083784D /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				D8EA3CC318CA8CE800F7F99F /* QBRound.h */,
-				D8EA3CC418CA8CE800F7F99F /* QBRound.m */,
+				D8EA3CC318CA8CE800F7F99F /* QBLevel.h */,
+				D8EA3CC418CA8CE800F7F99F /* QBLevel.m */,
 				D8EA3CC618CA8D9B00F7F99F /* QBQuestion.h */,
 				D8EA3CC718CA8D9B00F7F99F /* QBQuestion.m */,
+				D8465BD218E87E2100CAC85D /* QBRound.h */,
+				D8465BD318E87E2100CAC85D /* QBRound.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -242,6 +264,8 @@
 			children = (
 				D8EA3CCE18CC023600F7F99F /* QBHudView.h */,
 				D8EA3CCF18CC023600F7F99F /* QBHudView.m */,
+				D8465BCF18E7D7A100CAC85D /* QBEnterAnswerView.h */,
+				D8465BD018E7D7A100CAC85D /* QBEnterAnswerView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -249,6 +273,8 @@
 		D8E24D7E18BC65340083784D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				D8465BCC18E7D4EF00CAC85D /* QBGameController.h */,
+				D8465BCD18E7D4EF00CAC85D /* QBGameController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -257,6 +283,9 @@
 			isa = PBXGroup;
 			children = (
 				D8EA3CAF18C96A7E00F7F99F /* testquestions.plist */,
+				D82F183E18E8D9000082710A /* test1tossup.plist */,
+				D82F184018E8DA970082710A /* test1bonus.plist */,
+				D82F184218E8DC5C0082710A /* test1tossup1bonus.plist */,
 			);
 			name = "Question Sets";
 			sourceTree = "<group>";
@@ -338,8 +367,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				D84E2F6B18C403A600940993 /* QBModifyQuestionViewController.xib in Resources */,
+				D82F184718E8ED6A0082710A /* test1tossup1bonus.plist in Resources */,
 				D8BD76FA18BAD71300A1D4FD /* MainStoryboard.storyboard in Resources */,
+				D82F184518E8ED650082710A /* test1tossup.plist in Resources */,
 				D8E24D8618BEF0350083784D /* QBCreateQuestionViewController.xib in Resources */,
+				D82F184418E8ED620082710A /* test1bonus.plist in Resources */,
 				D8BD76D318BAD68000A1D4FD /* InfoPlist.strings in Resources */,
 				D8EA3CB018C96A7E00F7F99F /* testquestions.plist in Resources */,
 				D8BD76DB18BAD68000A1D4FD /* Images.xcassets in Resources */,
@@ -361,18 +393,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8465BD118E7D7A100CAC85D /* QBEnterAnswerView.m in Sources */,
 				D8BD76D518BAD68000A1D4FD /* main.m in Sources */,
 				D8EA3CD318CC044400F7F99F /* QBGameViewController.m in Sources */,
 				D8E24D7818BB18AF0083784D /* QBTableMenuViewController.m in Sources */,
 				D8EA3CD018CC023600F7F99F /* QBHudView.m in Sources */,
 				D8E24D8418BEDC8A0083784D /* QBBrowseQuestionViewController.m in Sources */,
+				D8465BCE18E7D4EF00CAC85D /* QBGameController.m in Sources */,
 				D8BD770318BB0EFC00A1D4FD /* QBLogInViewController.m in Sources */,
 				D8E24D8118BC65E40083784D /* QBCreateQuestionViewController.m in Sources */,
 				D84E2F6918C4017E00940993 /* QBModifyQuestionViewController.m in Sources */,
 				D8BD76D918BAD68000A1D4FD /* QBAppDelegate.m in Sources */,
+				D8465BD418E87E2100CAC85D /* QBRound.m in Sources */,
 				D86CD0EA18C7A1C5006E4910 /* QBViewController.m in Sources */,
 				D8EA3CC818CA8D9B00F7F99F /* QBQuestion.m in Sources */,
-				D8EA3CC518CA8CE800F7F99F /* QBRound.m in Sources */,
+				D8EA3CC518CA8CE800F7F99F /* QBLevel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -382,6 +417,7 @@
 			files = (
 				D8EA3CCA18CA95FC00F7F99F /* QBQuestionTests.m in Sources */,
 				D8BD76EE18BAD68000A1D4FD /* QuizbowlGameTests.m in Sources */,
+				D82F183D18E8D8560082710A /* QBLevelTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
