@@ -12,10 +12,10 @@
 @interface QBLevel : NSObject
 
 // An array of toss up questions
-@property (assign, nonatomic) NSArray* tossups;
+@property (strong, nonatomic) NSArray* tossups;
 
 // An array of bonus questions
-@property (assign, nonatomic) NSArray* bonus;
+@property (strong, nonatomic) NSArray* bonus;
 
 // Factory method to load a level from a file
 +(instancetype) levelWithName:(NSString* )name;

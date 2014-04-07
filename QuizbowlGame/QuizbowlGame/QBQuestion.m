@@ -48,7 +48,6 @@
         NSRange match = [self matchKey:keyPart toString:string];
         // The key part is not in the string
         if (NSEqualRanges(match, NSMakeRange(NSNotFound, 0))) {
-            NSLog(@"No match");
             return NO;
         }
     }
