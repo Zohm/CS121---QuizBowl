@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>questions</key>
+	<array>
+		<array>
+			<string>This artist depicted one god informing another of Venus&apos;s infidelity in his Apollo in the Forge of Vulcan. One of this artist&apos;s paintings shows a key exchange between Justin of Nassau and Ambrogio Spinola. Pablo (*) Picasso painted 58 re-creations of a painting by this man that focuses on maids surrounding the Infanta Margarita. Name this Spanish painter of The Surrender of Breda and Las Meninas.</string>
+			<string>Diego Velazquez</string>
+		</array>
+		<array>
+			<string>How many legs does an insect has?</string>
+			<string>6</string>
+		</array>
+		<array>
+			<string>What is the middle name of Harry Potter?</string>
+			<string>James</string>
+		</array>
+		<array>
+			<string>How many houses does have Hogwart?</string>
+			<string>4</string>
+		</array>
+	</array>
+	<key>timeToSolve</key>
+	<integer>45</integer>
+	<key>pointPerQuestion</key>
+	<integer>100</integer>
+</dict>
+</plist>
