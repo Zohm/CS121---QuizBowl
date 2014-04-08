@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Bonus</key>
+	<dict>
+		<key>Set 5</key>
+		<array>
+			<string>Name these game companies for ten points each.</string>
+			<array>
+				<string>This company has been jokingly known for never having made three games in a series. For ten points, name the developers of Portal and Half-Life.</string>
+				<dict>
+					<key>Valve</key>
+					<string></string>
+				</dict>
+			</array>
+			<array>
+				<string>Their early works include the games Flower and Flow. For ten points, name this game company that produced Journey.</string>
+				<dict>
+					<key>thatgamecompany</key>
+					<string></string>
+				</dict>
+			</array>
+			<array>
+				<string>Name this company that created Dear Esther and Amnesia : A Machine for Pigs.</string>
+				<dict>
+					<key>The Chinese Room</key>
+					<string></string>
+				</dict>
+			</array>
+		</array>
+		<key>Set 4</key>
+		<array>
+			<string>The muralist David Alfonso Siqueiros was involved in a plot to kill this man. For 10 points each:</string>
+			<array>
+				<string>Identify this communist advocate of Permanent Revolution, who was ultimately assassinated in Mexico in 1940.</string>
+				<dict>
+					<key>Trotsky</key>
+					<string>Leon</string>
+					<key>Bronshtein</key>
+					<string>Lev Davidovich, Lev</string>
+				</dict>
+			</array>
+			<array>
+				<string>Trotsky was once a co-editor of the Novy Mir newspaper in New York with this other Old Bolshevik. This author of the ABC of Communism would be executed in the last of Stalin’s public show trials.</string>
+				<dict>
+					<key>Bukharin</key>
+					<string>Nikolai Ivanovich, Nikolai</string>
+				</dict>
+			</array>
+			<array>
+				<string>Bukharin formed the Left Communists to oppose the signing of this 1918 treaty. Russia agreed to give up claims to territories like Poland and Finland as part of this treaty.</string>
+				<dict>
+					<key>Brest, Litvosk</key>
+					<string>treaty of, first, the</string>
+				</dict>
+			</array>
+		</array>
+		<key>Set 3</key>
+		<array>
+			<string>Identify the following about some Millennium Prize Problems, for 10 points each.</string>
+			<array>
+				<string>One such problem involves proving whether these two complexity classes from computer science are equivalent. If they are equivalent, certain hard problems can be done in n to the k plus k time.</string>
+				<dict>
+					<key>P, NP</key>
+					<string>vs, or, and</string>
+				</dict>
+			</array>
+			<array>
+				<string>Grigoriy Perelman solved this problem, a treatment of whether compact three dimensional manifolds are “simply connected” in four dimensions.</string>
+				<dict>
+					<key>Poincare</key>
+					<string>the, conjecture</string>
+				</dict>
+			</array>
+			<array>
+				<string>The namesake of this conjecture hypothesized that any topological cycle on a projective manifold is homologous to a rational combination of algebraic cycles if and only if that topological cycle has rotation number zero.</string>
+				<dict>
+					<key>Hodge</key>
+					<string>the, conjecture</string>
+				</dict>
+			</array>
+		</array>
+		<key>Set 2</key>
+		<array>
+			<string>By channelling the power of souls, he brought unprecedented prosperity to his realm. That is, until a colorless deep fog spread across the land. For ten points each:</string>
+			<array>
+				<string>Name this king of Boletaria who revived the soul arts.</string>
+				<dict>
+					<key>Allant</key>
+					<string>king, the twelfth, XII, old king</string>
+				</dict>
+			</array>
+			<array>
+				<string>The king favored this soul-rending blade for the way its power increased the more demonic the wielder&apos;s Soul became.</string>
+				<dict>
+					<key>Demonbrandt</key>
+					<string></string>
+				</dict>
+			</array>
+			<array>
+				<string>Allant used the soul of this knight to create the demon &quot;Penetrator&quot;.</string>
+				<dict>
+					<key>Metas</key>
+					<string>of the lance, knight</string>
+				</dict>
+			</array>
+		</array>
+		<key>Set 1</key>
+		<array>
+			<string>This man’s nephew, Perdix, was turned into a partridge after he threw Perdix off a cliff in a fit of jealousy. For 10 points each:</string>
+			<array>
+				<string>Identify this figure from Greek mythology who was upset that Perdix had invented the saw.</string>
+				<dict>
+					<key>Daedalus</key>
+					<string></string>
+					<key>Daedalos</key>
+					<string></string>
+					<key>Daidalos</key>
+					<string></string>
+				</dict>
+			</array>
+			<array>
+				<string>Daedalus created this maze to house the Minotaur on Crete.</string>
+				<dict>
+					<key>Labyrinth</key>
+					<string>the</string>
+				</dict>
+			</array>
+			<array>
+				<string>Daedalus was known in this myth system as Taitale. Other gods in this myth system include Ani, the god of the highest heaven, who is similar in many ways to Janus.</string>
+				<dict>
+					<key>Etruscans</key>
+					<string>the</string>
+					<key>Etrurian</key>
+					<string></string>
+				</dict>
+			</array>
+		</array>
+	</dict>
+	<key>Toss Up</key>
+	<array>
+		<array>
+			<string>Paul Farmer and Amy Goodman collaborated on a recent work by this man about “Getting Haiti Right”. In a series of lectures on his “Miseducation”, he attacked the media as a “bought priesthood”. He updated Dwight Macdonald’s inquiry of war guilt to the Vietnam era in “The Responsibility of Intellectuals”. More recent works by this author include Failed States, Rogue States and Deterring Democracy. For 10 points, name radical political theorist, also an MIT linguistics professor and Dean Maggie&apos;s doctoral advisor.</string>
+			<dict>
+				<key>Chomsky</key>
+				<string>Avram, Noam</string>
+			</dict>
+		</array>
+		<array>
+			<string>Ulrika Eleonora and her husband Frederick I succeeded one monarch killed during this conflict. The Ottomans won the Battle of Pruth River in this war, while the Polish theatre in this war was resolved with the Treaty of Altranstadt which deposed Augustus the Strong. It also witnessed the naval Battle of Hanko. Concluded with the Treaty of Nystad, battles in this conflict included one fought at Poltava. For 10 points, name this conflict between Charles XII of Sweden and Peter the Great of Russia.</string>
+			<dict>
+				<key>Great Northern War</key>
+				<string>Second</string>
+			</dict>
+		</array>
+		<array>
+			<string>Zheng and Pollock demonstrated the existence of a 100 micron-thick exclusion zone near solid interfaces with this susbstance, while a second critical point has been invoked to explain certain unusual properties of this substance in the supercooled state. The Mpemba effect implies it can sometimes freeze faster when hot than cold, and hydrogen bonding results in an unusually large dielectric constant which peaks at about 30°C. For 10 points, name this molecule often called the universal solvent.</string>
+			<dict>
+				<key>water</key>
+				<string></string>
+				<key>H2O</key>
+				<string></string>
+				<key>dihydrogen monoxide</key>
+				<string></string>
+			</dict>
+		</array>
+		<array>
+			<string>This contemporary of Thomas Girtin made an early watercolor called Salisbury Cathedral Seen from the Cloister. The influence of Claude Lorrain can be seen in his seascapes like Dido Building Carthage. He also painted Snow Storm -- Hannibal Crossing the Alps. In one of his works, a rabbit darts away from an oncoming train, while another shows hands rising up from shark-infested water. For 10 points, name this artist of Rain, Steam and Speed and The Slave Ship.</string>
+			<dict>
+				<key>Turner</key>
+				<string>Joseph, Mallord, William</string>
+			</dict>
+		</array>
+		<array>
+			<string>It’s not a snake, but one of these animals refused to weep when the Buddha died. Jacques Offenbach composed an operetta about one of these animals who is turned into a woman by Venus based on one of Aesop’s fables. A goddess with the head of this animal was popular in Bubastis and was an eye of Ra. Besides forming the head of Bastet, winged forms of these animals draw the chariot of Freya. For 10 points, name this type of animal that appears in folk tales like the one about Puss in Boots.</string>
+			<dict>
+				<key>cat</key>
+				<string>House, Domestic</string>
+				<key>feline</key>
+				<string></string>
+				<key>felix catus</key>
+				<string></string>
+			</dict>
+		</array>
+		<array>
+			<string>He was driven mad as a result of his experiments to achieve immortality. To compensate for his lack of sight, his servants wear helmets with six eye-slits arranged in two vertical columns. The chosen undead can obtain the Moonlight Greatsword by cutting off his tail. He was given the title of Duke for revealing that the source of the Everlasting Dragons’ immortality was their scales. For ten points, name this dragon who betrayed his own. </string>
+			<dict>
+				<key>Seath</key>
+				<string>the Scaleless, the Traitor</string>
+			</dict>
+		</array>
+	</array>
+</dict>
+</plist>
