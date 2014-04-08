@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Bonus</key>
+	<array>
+		<array>
+			<string>Math for ten points each.</string>
+			<array>
+				<string>What is two plus two? </string>
+				<dict>
+					<key>four</key>
+					<string></string>
+				</dict>
+			</array>
+			<array>
+				<string>What is two plus eight? </string>
+				<dict>
+					<key>ten</key>
+					<string></string>
+				</dict>
+			</array>
+			<array>
+				<string>What is two times six?</string>
+				<dict>
+					<key>twelve</key>
+					<string></string>
+				</dict>
+			</array>
+		</array>
+	</array>
+	<key>Toss Up</key>
+	<array>
+		<array>
+			<string></string>
+			<dict>
+				<key>four</key>
+				<string></string>
+			</dict>
+		</array>
+	</array>
+</dict>
+</plist>

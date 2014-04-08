@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Bonus</key>
+	<array/>
+	<key>Toss Up</key>
+	<array>
+		<array>
+			<string>What is two plus two?</string>
+			<dict>
+				<key>four</key>
+				<string></string>
+			</dict>
+		</array>
+	</array>
+</dict>
+</plist>
