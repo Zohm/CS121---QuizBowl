@@ -11,6 +11,7 @@
 		D82F184418E8ED620082710A /* test1bonus.plist in Resources */ = {isa = PBXBuildFile; fileRef = D82F184018E8DA970082710A /* test1bonus.plist */; };
 		D82F184518E8ED650082710A /* test1tossup.plist in Resources */ = {isa = PBXBuildFile; fileRef = D82F183E18E8D9000082710A /* test1tossup.plist */; };
 		D82F184718E8ED6A0082710A /* test1tossup1bonus.plist in Resources */ = {isa = PBXBuildFile; fileRef = D82F184218E8DC5C0082710A /* test1tossup1bonus.plist */; };
+		D82F184918FB1E9D0082710A /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D82F184818FB1E9D0082710A /* Parse.framework */; };
 		D8465BCE18E7D4EF00CAC85D /* QBGameController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8465BCD18E7D4EF00CAC85D /* QBGameController.m */; };
 		D8465BD118E7D7A100CAC85D /* QBEnterAnswerView.m in Sources */ = {isa = PBXBuildFile; fileRef = D8465BD018E7D7A100CAC85D /* QBEnterAnswerView.m */; };
 		D8465BD418E87E2100CAC85D /* QBRound.m in Sources */ = {isa = PBXBuildFile; fileRef = D8465BD318E87E2100CAC85D /* QBRound.m */; };
@@ -31,7 +32,6 @@
 		D8BD76EE18BAD68000A1D4FD /* QuizbowlGameTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D8BD76ED18BAD68000A1D4FD /* QuizbowlGameTests.m */; };
 		D8BD76FA18BAD71300A1D4FD /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8BD76F918BAD71300A1D4FD /* MainStoryboard.storyboard */; };
 		D8BD770318BB0EFC00A1D4FD /* QBLogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8BD770218BB0EFC00A1D4FD /* QBLogInViewController.m */; };
-		D8BD770718BB12DA00A1D4FD /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8BD770618BB12DA00A1D4FD /* Parse.framework */; };
 		D8E24D7318BB133A0083784D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8E24D7218BB133A0083784D /* SystemConfiguration.framework */; };
 		D8E24D7518BB13A40083784D /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8E24D7418BB13A40083784D /* MobileCoreServices.framework */; };
 		D8E24D7818BB18AF0083784D /* QBTableMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8E24D7718BB18AF0083784D /* QBTableMenuViewController.m */; };
@@ -62,6 +62,7 @@
 		D82F183E18E8D9000082710A /* test1tossup.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = test1tossup.plist; path = QuizbowlGameTests/test1tossup.plist; sourceTree = SOURCE_ROOT; };
 		D82F184018E8DA970082710A /* test1bonus.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = test1bonus.plist; path = QuizbowlGameTests/test1bonus.plist; sourceTree = SOURCE_ROOT; };
 		D82F184218E8DC5C0082710A /* test1tossup1bonus.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = test1tossup1bonus.plist; path = QuizbowlGameTests/test1tossup1bonus.plist; sourceTree = SOURCE_ROOT; };
+		D82F184818FB1E9D0082710A /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		D8465BCC18E7D4EF00CAC85D /* QBGameController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBGameController.h; sourceTree = "<group>"; };
 		D8465BCD18E7D4EF00CAC85D /* QBGameController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QBGameController.m; sourceTree = "<group>"; };
 		D8465BCF18E7D7A100CAC85D /* QBEnterAnswerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBEnterAnswerView.h; sourceTree = "<group>"; };
@@ -119,9 +120,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D82F184918FB1E9D0082710A /* Parse.framework in Frameworks */,
 				D8E24D7518BB13A40083784D /* MobileCoreServices.framework in Frameworks */,
 				D8E24D7318BB133A0083784D /* SystemConfiguration.framework in Frameworks */,
-				D8BD770718BB12DA00A1D4FD /* Parse.framework in Frameworks */,
 				D8BD76CB18BAD68000A1D4FD /* CoreGraphics.framework in Frameworks */,
 				D8BD76CD18BAD68000A1D4FD /* UIKit.framework in Frameworks */,
 				D8BD76C918BAD68000A1D4FD /* Foundation.framework in Frameworks */,
@@ -163,6 +164,7 @@
 		D8BD76C718BAD68000A1D4FD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D82F184818FB1E9D0082710A /* Parse.framework */,
 				D8E24D7418BB13A40083784D /* MobileCoreServices.framework */,
 				D8E24D7218BB133A0083784D /* SystemConfiguration.framework */,
 				D8BD770618BB12DA00A1D4FD /* Parse.framework */,
@@ -534,6 +536,7 @@
 					"$(inherited)",
 					"/Users/jarthur/Desktop/project-charles-henry/QuizbowlGame",
 					"/Users/jarthur/Desktop/project-charles-henry/ParseStarterProject",
+					"/Users/jarthur/Desktop/project-charles-henry/quizbowl/QuizbowlGame",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "QuizbowlGame/QuizbowlGame-Prefix.pch";
@@ -552,6 +555,7 @@
 					"$(inherited)",
 					"/Users/jarthur/Desktop/project-charles-henry/QuizbowlGame",
 					"/Users/jarthur/Desktop/project-charles-henry/ParseStarterProject",
+					"/Users/jarthur/Desktop/project-charles-henry/quizbowl/QuizbowlGame",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "QuizbowlGame/QuizbowlGame-Prefix.pch";
