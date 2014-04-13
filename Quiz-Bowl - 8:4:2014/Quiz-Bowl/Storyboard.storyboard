@@ -365,7 +365,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="obU-Hs-hBg">
-                                <rect key="frame" x="291" y="663" width="443" height="30"/>
+                                <rect key="frame" x="291" y="155" width="443" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -375,12 +375,15 @@
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <connections>
+                        <outlet property="answerField" destination="obU-Hs-hBg" id="XnI-Sm-8FP"/>
+                        <outlet property="btnBuzzerA" destination="7B1-fI-fFo" id="gFY-N1-F84"/>
+                        <outlet property="btnBuzzerB" destination="csp-8D-OrT" id="iOj-LW-IjT"/>
                         <outlet property="lblQuestion" destination="zKd-if-Tia" id="t6Z-fx-GIc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jKA-ed-bDk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-272" y="-1262"/>
+            <point key="canvasLocation" x="-516" y="-1226"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

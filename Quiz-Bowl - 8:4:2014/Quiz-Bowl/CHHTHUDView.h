@@ -18,6 +18,8 @@
 
 + (instancetype) viewWithRect: (CGRect) r;
 
-// SECOND LABEL SCORE TO ADD FOR TEAM B!!!!
+- (void) updateScore:(NSInteger)score forTeam:(NSInteger)team;
+
+- (void) setTimerToTime:(NSInteger)time;
 
 @end

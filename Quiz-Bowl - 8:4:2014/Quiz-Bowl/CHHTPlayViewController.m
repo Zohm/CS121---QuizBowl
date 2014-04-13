@@ -49,6 +49,13 @@
     //add a notificator to self: will check if the timer is stopped (due to a question answered or if the time is over)
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveNotification:) name:@"TimerUp" object:nil];
     
+    //Initialize the game controller
+    self.controller = [[QBGameController alloc] init];
+    self.controller.buzzer1 = self.btnBuzzerA;
+    self.controller.buzzer2 = self.btnBuzzerB;
+    self.controller.answerField = self.answerField;
+    self.controller.questionDisplay = [[CHHTQuestionDisplay alloc]initWithLabel:self.lblQuestion];
+    
     //create the path to get the plist used for the practice mode
     NSString *fileName = @"Question.plist";
     NSString *path = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:fileName];
@@ -59,91 +66,23 @@
     self.timeToSolve = [tempDict[@"timeToSolve"] intValue];
     self.pointPerQuestion = [tempDict[@"pointPerQuestion"] intValue];
     
-    /* TEST PURPOSE => TO BE FIXED
-    NSLog(@"%d", [self pointScoredWithXSecondsLeft:40]);
-    NSLog(@"%d", [self pointScoredWithXSecondsLeft:30]);
-    NSLog(@"%d", [self pointScoredWithXSecondsLeft:20]);
-    NSLog(@"%d", [self pointScoredWithXSecondsLeft:10]);
-     */
-    
-    //init the HUD
+    //Init the HUD
     CHHTHUDView * hudView = [CHHTHUDView viewWithRect:CGRectMake(0, 0, screenWidth, screenHeight)];
     [self.view addSubview:hudView];
     self.hud = hudView;
     self.lblQuestion.text = @"";
-    //init the game data: score team A and B
+    self.controller.hud = hudView;
+    
+    //Init the game data: score team A and B
     CHHTGameData * gd = [[CHHTGameData alloc] init];
     [gd setScoresWithPointsTeamA:0 andPointsTeamB:0];
     self.gameData = gd;
     
-    // autre init à faire
+    // Set up the level
+    self.controller.level = [QBLevel levelWithName:@"testquestions"];
     
-}
-
-- (void) viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    
-    //start timer
-    CHHTGameController *gc = [[CHHTGameController alloc] init];
-    self.gameC = gc;
-    [self.gameC startTimerWith:self.timeToSolve andTimer:self.hud.timer];
-    
-    //FOR TEST PURPOSE => this will be moved to where the player is scoreing point + score should be set by the function created to this purpose.
-    
-    self.gameData.scoreTeamA += 100;
-    [self.hud.gamePointsTeamA countTo:self.gameData.scoreTeamA withDuration:1.5];
-    self.gameData.scoreTeamB += 80;
-    [self.hud.gamePointsTeamB countTo:self.gameData.scoreTeamB withDuration:1];
-     
-    
-    [self showQuestion];
-}
-
-- (void) showQuestion
-{
-    NSArray *selectedQuestion = self.questions[0];
-    NSString *questionString = selectedQuestion[0];
-    self.answer = selectedQuestion[1];
-    nbLetterQ = [questionString length];
-    
-    [self startTimerWith:questionString];
-}
-
-- (void) displayQuestionCharByChar: (NSString *) str andInt: (int) index
-{
-    self.lblQuestion.text = [NSString stringWithFormat:@"%@%C", self.lblQuestion.text, [str characterAtIndex:index]];
-    [NSThread sleepForTimeInterval:0.05f];
-}
-
-// Timer functions
-- (void) startTimerWith: (NSString *) str
-{
-    //initialize the timer
-    indexLetter = 0;
-    
-    //activate the timer
-    _timer = [NSTimer scheduledTimerWithTimeInterval: 0.01f
-                                              target: self
-                                            selector: @selector(tick:)
-                                            userInfo: str
-                                             repeats: YES];
-}
-
-- (void) stopTimer
-{
-    [_timer invalidate];
-    _timer = nil;
-}
-
-//timer tick function: at each tick, display a new letter.
-- (void) tick:(NSTimer *)timer
-{
-    [self displayQuestionCharByChar:[timer userInfo] andInt:indexLetter];
-    indexLetter++;
-    
-    if(indexLetter == nbLetterQ)
-        [self stopTimer];
+    // Start the game
+    [self.controller beginGame];
 }
 
 - (int) pointScoredWithXSecondsLeft: (int) secondsLeft
@@ -154,7 +93,6 @@
     
     return resultScore;
 }
-
 
 - (void)didReceiveMemoryWarning
 {

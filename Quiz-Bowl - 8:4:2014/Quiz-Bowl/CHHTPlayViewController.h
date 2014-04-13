@@ -10,6 +10,7 @@
 #import "CHHTHUDView.h"
 #import "CHHTGameController.h"
 #import "CHHTGameData.h"
+#import "QBGameController.h"
 
 @interface CHHTPlayViewController : UIViewController
 {
@@ -18,8 +19,16 @@
     int nbLetterQ;
 }
 
+// Game controller
+@property (strong, nonatomic) QBGameController* controller;
+
 //button back -> go back to the menu view
 @property (weak, nonatomic) IBOutlet UIButton *btnBack;
+@property (weak, nonatomic) IBOutlet UIButton *btnBuzzerA;
+@property (weak, nonatomic) IBOutlet UIButton *btnBuzzerB;
+
+//
+@property (weak, nonatomic) IBOutlet UITextField *answerField;
 
 //Label
 @property (weak, nonatomic) IBOutlet UILabel *lblQuestion;

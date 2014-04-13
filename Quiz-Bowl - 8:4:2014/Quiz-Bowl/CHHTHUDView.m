@@ -53,4 +53,18 @@
     return hud;
 }
 
+-(void) setTimerToTime:(NSInteger)time
+{
+    [self.timer setSeconds:time];
+}
+
+-(void)updateScore:(NSInteger)score forTeam:(NSInteger)team
+{
+    if (team == 1) {
+        [self.gamePointsTeamA countTo:score withDuration:2.0];
+    } else {
+        [self.gamePointsTeamB countTo:score withDuration:2.0];
+    }
+}
+
 @end

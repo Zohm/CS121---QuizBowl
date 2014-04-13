@@ -35,13 +35,13 @@
 		C2B66B4C18BB40BA00691A0A /* Quiz_BowlTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B66B4B18BB40BA00691A0A /* Quiz_BowlTests.m */; };
 		C2B66B5A18BB415300691A0A /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2B66B5918BB415300691A0A /* Storyboard.storyboard */; };
 		D82F184C18FB34380082710A /* QBGameController.m in Sources */ = {isa = PBXBuildFile; fileRef = D82F184B18FB34380082710A /* QBGameController.m */; };
-		D82F184F18FB34680082710A /* QBGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D82F184E18FB34680082710A /* QBGameViewController.m */; };
 		D82F185418FB349E0082710A /* QBEnterAnswerView.m in Sources */ = {isa = PBXBuildFile; fileRef = D82F185118FB349E0082710A /* QBEnterAnswerView.m */; };
 		D82F185518FB349E0082710A /* QBHudView.m in Sources */ = {isa = PBXBuildFile; fileRef = D82F185318FB349E0082710A /* QBHudView.m */; };
 		D82F185C18FB34C20082710A /* QBLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = D82F185718FB34C20082710A /* QBLevel.m */; };
 		D82F185D18FB34C20082710A /* QBQuestion.m in Sources */ = {isa = PBXBuildFile; fileRef = D82F185918FB34C20082710A /* QBQuestion.m */; };
 		D82F185E18FB34C20082710A /* QBRound.m in Sources */ = {isa = PBXBuildFile; fileRef = D82F185B18FB34C20082710A /* QBRound.m */; };
 		D82F186018FB35C50082710A /* testquestions.plist in Resources */ = {isa = PBXBuildFile; fileRef = D82F185F18FB35C50082710A /* testquestions.plist */; };
+		D82F186318FB44930082710A /* CHHTQuestionDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = D82F186218FB44930082710A /* CHHTQuestionDisplay.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,8 +99,6 @@
 		C2B66B5918BB415300691A0A /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		D82F184A18FB34380082710A /* QBGameController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBGameController.h; sourceTree = "<group>"; };
 		D82F184B18FB34380082710A /* QBGameController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QBGameController.m; sourceTree = "<group>"; };
-		D82F184D18FB34680082710A /* QBGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBGameViewController.h; sourceTree = "<group>"; };
-		D82F184E18FB34680082710A /* QBGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QBGameViewController.m; sourceTree = "<group>"; };
 		D82F185018FB349E0082710A /* QBEnterAnswerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBEnterAnswerView.h; sourceTree = "<group>"; };
 		D82F185118FB349E0082710A /* QBEnterAnswerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QBEnterAnswerView.m; sourceTree = "<group>"; };
 		D82F185218FB349E0082710A /* QBHudView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBHudView.h; sourceTree = "<group>"; };
@@ -112,6 +110,8 @@
 		D82F185A18FB34C20082710A /* QBRound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBRound.h; sourceTree = "<group>"; };
 		D82F185B18FB34C20082710A /* QBRound.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QBRound.m; sourceTree = "<group>"; };
 		D82F185F18FB35C50082710A /* testquestions.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = testquestions.plist; sourceTree = "<group>"; };
+		D82F186118FB44930082710A /* CHHTQuestionDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHHTQuestionDisplay.h; sourceTree = "<group>"; };
+		D82F186218FB44930082710A /* CHHTQuestionDisplay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHHTQuestionDisplay.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,8 +179,6 @@
 		C2B66B2618BB40B800691A0A /* Quiz-Bowl */ = {
 			isa = PBXGroup;
 			children = (
-				D82F184D18FB34680082710A /* QBGameViewController.h */,
-				D82F184E18FB34680082710A /* QBGameViewController.m */,
 				C297F4E118C531CA004E0578 /* config.h */,
 				C2B66B5B18BB41BD00691A0A /* Questions */,
 				C2B66B5718BB40D600691A0A /* Models */,
@@ -260,6 +258,8 @@
 				C29123D218BD3F4200447689 /* CHHTPracticeViewController.m */,
 				C29212A218CD6A6700ED3F10 /* CHHTPracticeEndScreenViewController.h */,
 				C29212A318CD6A6700ED3F10 /* CHHTPracticeEndScreenViewController.m */,
+				D82F186118FB44930082710A /* CHHTQuestionDisplay.h */,
+				D82F186218FB44930082710A /* CHHTQuestionDisplay.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -420,13 +420,13 @@
 				C29123CC18BD306500447689 /* CHHTPlayViewController.m in Sources */,
 				C29123D318BD3F4200447689 /* CHHTPracticeViewController.m in Sources */,
 				C297F4DD18C52B0A004E0578 /* CHHTimerView.m in Sources */,
+				D82F186318FB44930082710A /* CHHTQuestionDisplay.m in Sources */,
 				D82F184C18FB34380082710A /* QBGameController.m in Sources */,
 				C297F4E018C52CB3004E0578 /* CHHTHUDView.m in Sources */,
 				C28D14C618C5C21A008BB632 /* CHHTGameController.m in Sources */,
 				D82F185D18FB34C20082710A /* QBQuestion.m in Sources */,
 				C29212A418CD6A6700ED3F10 /* CHHTPracticeEndScreenViewController.m in Sources */,
 				C2883BD518F2089500BC8CD9 /* CHHTGameData.m in Sources */,
-				D82F184F18FB34680082710A /* QBGameViewController.m in Sources */,
 				C29AF40D18F293BF0035E8EF /* CHHTCounterLabelView.m in Sources */,
 				D82F185C18FB34C20082710A /* QBLevel.m in Sources */,
 				D82F185E18FB34C20082710A /* QBRound.m in Sources */,

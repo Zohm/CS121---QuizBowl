@@ -14,10 +14,6 @@
 
 +(instancetype)labelWithFont:(UIFont*)font frame:(CGRect)r andValue:(int)v;
 
--(void)setValue:(int)value;
--(void)updateValueBy:(NSNumber*)valueDelta;
 -(void)countTo:(int)to withDuration:(float)t;
-
-// THIS NEED A SECOND SCORE LABEL FOR THE SECND TEAM!!!
 
 @end

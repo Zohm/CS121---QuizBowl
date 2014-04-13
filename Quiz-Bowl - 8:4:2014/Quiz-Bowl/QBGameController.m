@@ -8,6 +8,7 @@
 
 #import "QBGameController.h"
 #import "QBRound.h"
+#import "CHHTPlayViewController.h"
 
 // Defines the possible states the game can be in.
 typedef enum {
@@ -31,6 +32,8 @@ typedef enum {
     NSInteger _score2;
 }
 
+// Game control flow
+
 -(void) beginGame
 {
     // Start with a tossup
@@ -39,24 +42,14 @@ typedef enum {
     [self startQuestion];
 }
 
-- (void) setHud:(QBHudView*) hud
-{
-    _hud = hud;
-    // Have the buzzers in the hud select their respective actions
-    [hud.buzzer1 addTarget:self action:@selector(actionBuzzTeam:)
-          forControlEvents:UIControlEventTouchUpInside];
-    [hud.buzzer2 addTarget:self action:@selector(actionBuzzTeam:)
-          forControlEvents:UIControlEventTouchUpInside];
-}
-
 -(void) startQuestion
 {
     _currentQuestion = [_currentRound getNextQuestion];
     //_currentTime = [_currentRound getTimeForQuestion];
-    [self restartTimerWithTime:10];
+    [self restartTimerWithTime:100];
     
     // Display the question
-    self.hud.question.text = [NSString stringWithFormat:@"%@",_currentQuestion.question];
+    [self.questionDisplay showQuestion:_currentQuestion];
     
 }
 
@@ -83,14 +76,14 @@ typedef enum {
     if (_state == Team1Answer) {
         _state = Team1Bonus;
         _currentRound = [self.level getNextBonus];
-        [self.hud.buzzer1 setEnabled:YES];
+        [self.buzzer1 setEnabled:YES];
     }
     
     // Team 2 answered a tossup. Move onto bonus round.
     else if (_state == Team2Answer) {
         _state = Team2Bonus;
         _currentRound = [self.level getNextBonus];
-        [self.hud.buzzer2 setEnabled:YES];
+        [self.buzzer2 setEnabled:YES];
     }
     
     // Either no team answered a tossup or a bonus round finished.
@@ -98,8 +91,8 @@ typedef enum {
     else if(![_currentRound hasNextQuestion])
     {
         // Re-enable both buzzers
-        [self.hud.buzzer1 setEnabled:YES];
-        [self.hud.buzzer2 setEnabled:YES];
+        [self.buzzer1 setEnabled:YES];
+        [self.buzzer2 setEnabled:YES];
 
         _state = TossUp;
         _currentRound = [self.level getNextTossUp];
@@ -120,39 +113,41 @@ typedef enum {
         }
     } else {
         --_currentTime;
-        self.hud.timer.text = [NSString stringWithFormat:@"%i", _currentTime];
+        //Fix this
+        [self.hud setTimerToTime:_currentTime];
+        //self.hud.timer.text = [NSString stringWithFormat:@"%i", _currentTime];
     }
 }
 
 -(BOOL) checkAnswerForTeam:(NSInteger)team
 {
-    NSString* answer = self.answerView.answerField.text;
+    NSString* answer = self.answerField.text;
     
     // Reset the entry text field
-    self.answerView.answerField.text = @"Enter your answer";
+    self.answerField.text = @"Enter your answer";
     
     // Increment scores if the answer is correct
     if ([_currentQuestion doesMatchAnswer:answer] && team == 1) {
         ++_score1;
-        self.hud.score1.text = [NSString stringWithFormat:@"score: %i", _score1];
+        [self.hud updateScore:_score1 forTeam:1];
         return YES;
     }
     else if ([_currentQuestion doesMatchAnswer:answer] && team == 2) {
         ++_score2;
-        self.hud.score2.text = [NSString stringWithFormat:@"score: %i", _score2];
+        [self.hud updateScore:_score2 forTeam:2];
         return YES;
     }
     else if (team == 1 && _state == Team1Answer) {
         // Each team only gets one chance to answer the tossup
-        [self.hud.buzzer1 setEnabled:NO];
+        [self.buzzer1 setEnabled:NO];
     }
     else if (team == 2 && _state == Team2Answer) {
-        [self.hud.buzzer2 setEnabled:NO];
+        [self.buzzer2 setEnabled:NO];
     }
     return NO;
 }
 
-- (void)actionBuzzTeam:(UIButton*) buzzer
+- (void)actionBuzzTeam:(NSInteger)teamNumber
 {
     // Pause the countdown.
     [_timer invalidate];
@@ -171,7 +166,7 @@ typedef enum {
                 [self startNextRound];
             } else {
                 _state = TossUp;
-                self.answerView.hidden = YES;
+                self.answerField.hidden = YES;
                 [self restartTimerWithTime:_timeLeftForRound];
             }
             break;
@@ -180,25 +175,25 @@ typedef enum {
                 [self startNextRound];
             } else {
                 _state = TossUp;
-                self.answerView.hidden = YES;
+                self.answerField.hidden = YES;
                 [self restartTimerWithTime:_timeLeftForRound];
             }
             break;
         case TossUp:
-            if ([buzzer isEqual:self.hud.buzzer1]) {
+            if (teamNumber == 1) {
                 _state = Team1Answer;
                 _timeLeftForRound = _currentTime;
                 // Each team gets 10 seconds after buzzing in to answer
                 [self restartTimerWithTime:10];
                 // Show the answer entry view
-                self.answerView.hidden = NO;
+                self.answerField.hidden = NO;
             } else {
                 _state = Team2Answer;
                 _timeLeftForRound = _currentTime;
                 _currentTime = 10;
                 [self restartTimerWithTime:10];
                 // Display the answer entry view
-                self.answerView.hidden = NO;
+                self.answerField.hidden = NO;
             }
         default:
             break;

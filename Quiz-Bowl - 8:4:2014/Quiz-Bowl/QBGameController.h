@@ -11,15 +11,23 @@
 #import "QBEnterAnswerView.h"
 #import "QBQuestion.h"
 #import "QBLevel.h" 
+#import "CHHTQuestionDisplay.h"
+#import "CHHTHUDView.h"
 
 @interface QBGameController : NSObject
 
-@property (strong, nonatomic) QBHudView* hud;
+@property (weak, nonatomic) UIButton* buzzer1;
 
-@property (strong, nonatomic) QBEnterAnswerView* answerView;
+@property (weak, nonatomic) UIButton* buzzer2;
+
+@property (weak, nonatomic) UITextField* answerField;
+
+@property (weak, nonatomic) CHHTHUDView* hud; 
+
+@property (strong, nonatomic) CHHTQuestionDisplay* questionDisplay; 
 
 @property (strong, nonatomic) QBLevel* level;
 
--(void) beginGame; 
+-(void) beginGame;
 
 @end
