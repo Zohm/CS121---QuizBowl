@@ -85,6 +85,16 @@
     [self.controller beginGame];
 }
 
+-(IBAction)buzzTeam1:(id)sender
+{
+    [self.controller actionBuzzTeam:1];
+}
+
+-(IBAction)buzzTeam2:(id)sender
+{
+    [self.controller actionBuzzTeam:2];
+}
+
 - (int) pointScoredWithXSecondsLeft: (int) secondsLeft
 {
     int resultScore = 0;

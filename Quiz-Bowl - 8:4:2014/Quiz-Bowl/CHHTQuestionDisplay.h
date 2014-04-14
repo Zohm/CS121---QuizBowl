@@ -10,16 +10,15 @@
 #import "QBQuestion.h"
 
 @interface CHHTQuestionDisplay : NSObject
-{
-    int indexLetter;
-    NSTimer *_timer;
-    int nbLetterQ;
-}
 
 @property (weak, nonatomic) UILabel* lblQuestion;
 
 -(instancetype) initWithLabel:(UILabel*) label;
 
 -(void)showQuestion:(QBQuestion*)question;
+
+-(void)pauseDisplay;
+
+-(void)resumeDisplay;
 
 @end

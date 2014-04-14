@@ -27,7 +27,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnBuzzerA;
 @property (weak, nonatomic) IBOutlet UIButton *btnBuzzerB;
 
-//
+// Answer field
 @property (weak, nonatomic) IBOutlet UITextField *answerField;
 
 //Label
@@ -46,10 +46,9 @@
 @property (weak, nonatomic) CHHTGameController * gameC;
 @property (strong, nonatomic) CHHTGameData * gameData;
 
-// Timer's functions
-- (void) startTimerWith:(NSString *) str;
-- (void) stopTimer;
-- (void) tick: (NSTimer *) timer;
+// Buzzer selectors
+-(IBAction)buzzTeam1:(id)sender;
+-(IBAction)buzzTeam2:(id)sender;
 
 //function to calculate the number of points scored for a question
 - (int) pointScoredWithXSecondsLeft: (int) secondsLeft;

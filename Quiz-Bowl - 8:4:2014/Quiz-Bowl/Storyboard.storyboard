@@ -344,6 +344,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="buzzTeam1:" destination="V8D-Z5-zww" eventType="touchUpInside" id="bAd-7k-la7"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="csp-8D-OrT">
                                 <rect key="frame" x="888" y="352" width="100" height="44"/>
@@ -356,6 +359,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="buzzTeam2:" destination="V8D-Z5-zww" eventType="touchUpInside" id="DN8-BE-xJL"/>
+                                </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zKd-if-Tia">
                                 <rect key="frame" x="222" y="193" width="585" height="412"/>

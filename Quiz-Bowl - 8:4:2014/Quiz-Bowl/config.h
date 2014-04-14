@@ -20,4 +20,10 @@
 // Delay time between question
 #define delayQ 0.5f
 
+// Display speed (time per character)
+#define timePerChar 0.05f
+
+// Time to buzz in after question is displayed
+#define timeToBuzz 10
+
 #endif

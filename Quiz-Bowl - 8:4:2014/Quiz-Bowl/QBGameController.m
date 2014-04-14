@@ -23,7 +23,7 @@ typedef enum {
 @implementation QBGameController
 {
     gameState _state;
-    NSInteger _currentTime;
+    float _currentTime;
     NSInteger _timeLeftForRound;
     QBQuestion* _currentQuestion;
     QBRound* _currentRound;
@@ -45,8 +45,10 @@ typedef enum {
 -(void) startQuestion
 {
     _currentQuestion = [_currentRound getNextQuestion];
-    //_currentTime = [_currentRound getTimeForQuestion];
-    [self restartTimerWithTime:100];
+    float displayTime = [_currentQuestion.question length] * timePerChar;
+    _currentTime = timeToBuzz + displayTime;
+    
+    [self restartTimerWithTime:_currentTime];
     
     // Display the question
     [self.questionDisplay showQuestion:_currentQuestion];
@@ -151,7 +153,7 @@ typedef enum {
 {
     // Pause the countdown.
     [_timer invalidate];
-    
+        
     switch (_state) {
         case Team1Bonus:
             [self checkAnswerForTeam:1];
@@ -168,6 +170,7 @@ typedef enum {
                 _state = TossUp;
                 self.answerField.hidden = YES;
                 [self restartTimerWithTime:_timeLeftForRound];
+                [self.questionDisplay resumeDisplay];
             }
             break;
         case Team2Answer:
@@ -177,9 +180,11 @@ typedef enum {
                 _state = TossUp;
                 self.answerField.hidden = YES;
                 [self restartTimerWithTime:_timeLeftForRound];
+                [self.questionDisplay resumeDisplay];
             }
             break;
         case TossUp:
+            [self.questionDisplay pauseDisplay];
             if (teamNumber == 1) {
                 _state = Team1Answer;
                 _timeLeftForRound = _currentTime;

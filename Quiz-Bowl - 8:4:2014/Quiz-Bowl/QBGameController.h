@@ -13,6 +13,7 @@
 #import "QBLevel.h" 
 #import "CHHTQuestionDisplay.h"
 #import "CHHTHUDView.h"
+#import "config.h"
 
 @interface QBGameController : NSObject
 
@@ -29,5 +30,7 @@
 @property (strong, nonatomic) QBLevel* level;
 
 -(void) beginGame;
+
+-(void) actionBuzzTeam:(NSInteger)teamNumber;
 
 @end

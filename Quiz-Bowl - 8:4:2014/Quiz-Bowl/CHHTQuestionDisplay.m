@@ -7,9 +7,15 @@
 //
 
 #import "CHHTQuestionDisplay.h"
+#import "config.h"
 
 @implementation CHHTQuestionDisplay
-
+{
+    int indexLetter;
+    NSTimer *_timer;
+    int nbLetterQ;
+    NSString* _str;
+}
 
 - (instancetype) initWithLabel:(UILabel*) label
 {
@@ -22,30 +28,44 @@
 
 - (void) showQuestion:(QBQuestion*) question
 {
+    // Reset the label
+    self.lblQuestion.text = @"";
+    
     NSString* questionString = question.question;
     nbLetterQ = [questionString length];
     
     [self startTimerWith: questionString];
 }
 
+-(void) pauseDisplay
+{
+    [_timer invalidate];
+}
+
+-(void) resumeDisplay
+{
+    _timer = [NSTimer scheduledTimerWithTimeInterval: timePerChar
+                                              target: self
+                                            selector: @selector(tick:)
+                                            userInfo: nil
+                                             repeats: YES];
+}
+
 - (void) displayQuestionCharByChar: (NSString *) str andInt: (int) index
 {
     self.lblQuestion.text = [NSString stringWithFormat:@"%@%C", self.lblQuestion.text, [str characterAtIndex:index]];
-    [NSThread sleepForTimeInterval:0.05f];
 }
 
 // Timer functions
 - (void) startTimerWith: (NSString *) str
 {
-    //initialize the timer
+    // Initialize the timer
     indexLetter = 0;
     
-    //activate the timer
-    _timer = [NSTimer scheduledTimerWithTimeInterval: 0.01f
-                                              target: self
-                                            selector: @selector(tick:)
-                                            userInfo: str
-                                             repeats: YES];
+    // Store the string to display
+    _str = str;
+    
+    [self resumeDisplay];
 }
 
 - (void) stopTimer
@@ -57,7 +77,7 @@
 //timer tick function: at each tick, display a new letter.
 - (void) tick:(NSTimer *)timer
 {
-    [self displayQuestionCharByChar:[timer userInfo] andInt:indexLetter];
+    [self displayQuestionCharByChar:_str andInt:indexLetter];
     indexLetter++;
     
     if(indexLetter == nbLetterQ)
