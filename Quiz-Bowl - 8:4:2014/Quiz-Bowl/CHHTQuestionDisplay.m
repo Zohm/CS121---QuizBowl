@@ -26,7 +26,7 @@
     return self;
 }
 
-- (void) showQuestion:(QBQuestion*) question
+- (void)showQuestion:(QBQuestion*) question
 {
     // Reset the label
     self.lblQuestion.text = @"";
@@ -35,6 +35,12 @@
     nbLetterQ = [questionString length];
     
     [self startTimerWith: questionString];
+}
+
+-(void)showText:(NSString *)text
+{
+    nbLetterQ = [text length];
+    [self startTimerWith:text];
 }
 
 -(void) pauseDisplay

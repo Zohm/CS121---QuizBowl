@@ -17,6 +17,8 @@
 
 -(void)showQuestion:(QBQuestion*)question;
 
+-(void)showText:(NSString*)text;
+
 -(void)pauseDisplay;
 
 -(void)resumeDisplay;

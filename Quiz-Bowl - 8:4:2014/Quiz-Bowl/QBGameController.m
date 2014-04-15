@@ -13,6 +13,8 @@
 // Defines the possible states the game can be in.
 typedef enum {
     TossUp = 0,
+    Team1BonusIntro,
+    Team2BonusIntro,
     Team1Bonus,
     Team2Bonus,
     Team1Answer,
@@ -82,15 +84,35 @@ typedef enum {
     
     // Team 1 answered a tossup. Move onto bonus round.
     if (_state == Team1Answer) {
-        _state = Team1Bonus;
+        _state = Team1BonusIntro;
         _currentRound = [self.level getNextBonus];
-        [self.buzzer1 setEnabled:YES];
+        [self.buzzer2 setEnabled:NO]; // No buzzing during the intro!
+        float timeToDisplay = [_currentRound.intro length] * timePerChar;
+        [self restartTimerWithTime:timeToDisplay];
+        [self.questionDisplay showText:_currentRound.intro];
     }
     
     // Team 2 answered a tossup. Move onto bonus round.
     else if (_state == Team2Answer) {
-        _state = Team2Bonus;
+        _state = Team2BonusIntro;
         _currentRound = [self.level getNextBonus];
+        [self.buzzer1 setEnabled:NO];
+        float timeToDisplay = [_currentRound.intro length] * timePerChar;
+        [self restartTimerWithTime:timeToDisplay];
+        [self.questionDisplay showText:_currentRound.intro];
+    }
+    
+    // Team 1 finished their bonus round intro. Start bonus round.
+    else if (_state == Team1BonusIntro) {
+        _state = Team1Bonus;
+        [self.buzzer1 setEnabled:YES];
+        [self.buzzer2 setEnabled:YES];
+    }
+    
+    // Team 2 finished their bonus round intro. Start bonus round.
+    else if (_state == Team2BonusIntro) {
+        _state = Team2Bonus;
+        [self.buzzer1 setEnabled:YES];
         [self.buzzer2 setEnabled:YES];
     }
     
@@ -106,7 +128,9 @@ typedef enum {
         _currentRound = [self.level getNextTossUp];
     }
     
-    [self startQuestion];
+    if (_state != Team1BonusIntro && _state != Team2BonusIntro) {
+        [self startQuestion];
+    }
 }
 
 -(void)tick:(NSTimer*)timer
@@ -142,9 +166,7 @@ typedef enum {
         }
     } else {
         --_currentTime;
-        //Fix this
         [self.hud setTimerToTime:_currentTime];
-        //self.hud.timer.text = [NSString stringWithFormat:@"%i", _currentTime];
     }
 }
 
@@ -168,9 +190,11 @@ typedef enum {
     }
     else if (team == 1 && _state == Team1Answer) {
         // Each team only gets one chance to answer the tossup
+        _team1answered = YES;
         [self.buzzer1 setEnabled:NO];
     }
     else if (team == 2 && _state == Team2Answer) {
+        _team2answered = YES;
         [self.buzzer2 setEnabled:NO];
     }
     return NO;
@@ -197,7 +221,6 @@ typedef enum {
                 [self startNextRound];
             } else {
                 _state = TossUp;
-                _team1answered = YES;
                 self.answerField.hidden = YES;
                 if (_team2answered) {
                     [self startNextRound];
@@ -212,7 +235,6 @@ typedef enum {
                 [self startNextRound];
             } else {
                 _state = TossUp;
-                _team2answered = YES;
                 self.answerField.hidden = YES;
                 if (_team1answered) {
                     [self startNextRound];
