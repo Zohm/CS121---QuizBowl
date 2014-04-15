@@ -52,8 +52,11 @@
     //Initialize the game controller
     self.controller = [[QBGameController alloc] init];
     self.controller.buzzer1 = self.btnBuzzerA;
+    [self.controller.buzzer1 setTitleColor:[UIColor grayColor] forState:UIControlStateDisabled];
     self.controller.buzzer2 = self.btnBuzzerB;
+    [self.controller.buzzer2 setTitleColor:[UIColor grayColor] forState:UIControlStateDisabled];
     self.controller.answerField = self.answerField;
+    self.controller.answerField.hidden = YES;
     self.controller.questionDisplay = [[CHHTQuestionDisplay alloc]initWithLabel:self.lblQuestion];
     
     //create the path to get the plist used for the practice mode

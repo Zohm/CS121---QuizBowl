@@ -30,6 +30,8 @@ typedef enum {
     NSTimer* _timer;
     NSInteger _score1;
     NSInteger _score2;
+    BOOL _team1answered;
+    BOOL _team2answered;
 }
 
 // Game control flow
@@ -67,6 +69,10 @@ typedef enum {
 
 -(void) startNextRound
 {
+    // No team has attempted an answer at the start of the round
+    _team1answered = NO;
+    _team2answered = NO;
+    
     // The game ends when we run out of tossup or bonus questions.
     if (!([self.level hasNextTossUp] && [self.level hasNextBonus])) {
         _state = EndGame;
@@ -105,10 +111,31 @@ typedef enum {
 
 -(void)tick:(NSTimer*)timer
 {
-    // We ran out of time. Move on to the next question.
+    // We ran out of time.
     if (_currentTime <= 0) {
         [_timer invalidate];
-        if ([_currentRound hasNextQuestion]) {
+        // Ran out of time given to answer question. Return to bonus round.
+        if (_state == Team1Answer) {
+            _state = TossUp;
+            if (_team2answered) {
+                [self startNextRound];
+            } else {
+                [self restartTimerWithTime:_timeLeftForRound];
+                [self.questionDisplay resumeDisplay];
+                [self.buzzer1 setEnabled:NO];
+            }
+        }
+        else if(_state == Team2Answer) {
+            _state = TossUp;
+            if (_team1answered) {
+                [self startNextRound];
+            } else {
+                [self restartTimerWithTime:_timeLeftForRound];
+                [self.questionDisplay resumeDisplay];
+                [self.buzzer2 setEnabled:NO];
+            }
+        }
+        else if ([_currentRound hasNextQuestion]) {
             [self startQuestion];
         } else {
             [self startNextRound];
@@ -157,10 +184,12 @@ typedef enum {
     switch (_state) {
         case Team1Bonus:
             [self checkAnswerForTeam:1];
+            [self.questionDisplay pauseDisplay];
             [self startNextRound];
             break;
         case Team2Bonus:
             [self checkAnswerForTeam:2];
+            [self.questionDisplay pauseDisplay];
             [self startNextRound];
             break;
         case Team1Answer:
@@ -168,9 +197,14 @@ typedef enum {
                 [self startNextRound];
             } else {
                 _state = TossUp;
+                _team1answered = YES;
                 self.answerField.hidden = YES;
-                [self restartTimerWithTime:_timeLeftForRound];
-                [self.questionDisplay resumeDisplay];
+                if (_team2answered) {
+                    [self startNextRound];
+                } else {
+                    [self restartTimerWithTime:_timeLeftForRound];
+                    [self.questionDisplay resumeDisplay];
+                }
             }
             break;
         case Team2Answer:
@@ -178,9 +212,14 @@ typedef enum {
                 [self startNextRound];
             } else {
                 _state = TossUp;
+                _team2answered = YES;
                 self.answerField.hidden = YES;
-                [self restartTimerWithTime:_timeLeftForRound];
-                [self.questionDisplay resumeDisplay];
+                if (_team1answered) {
+                    [self startNextRound];
+                } else {
+                    [self restartTimerWithTime:_timeLeftForRound];
+                    [self.questionDisplay resumeDisplay];
+                }
             }
             break;
         case TossUp:
