@@ -243,9 +243,16 @@ typedef enum {
             }
             break;
         case Team2Answer:
-            if ([self checkAnswerForTeam:2] || ![self.buzzer1 isEnabled]) {
+            if ([self checkAnswerForTeam:2]) {
                 [self startNextRound];
-            } else {
+            }
+            
+            else if (![self.buzzer1 isEnabled]) {
+                _state = TossUp;
+                [self startNextRound];
+            }
+            
+            else {
                 _state = TossUp;
                 self.answerField.hidden = YES;
                 if (_team1answered) {
