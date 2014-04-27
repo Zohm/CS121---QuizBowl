@@ -143,7 +143,7 @@ typedef enum {
     // We ran out of time.
     if (_currentTime <= 0) {
         [_timer invalidate];
-        // Ran out of time given to answer question. Return to bonus round.
+        // Ran out of time given to answer question. Return to tossup round.
         if (_state == Team1Answer) {
             _state = TossUp;
             if (_team2answered) {
@@ -152,10 +152,12 @@ typedef enum {
                 _team1answered = YES;
                 [self restartTimerWithTime:_timeLeftForRound];
                 [self.questionDisplay resumeDisplay];
-                [self.buzzer1 setEnabled:NO];
+                [self.buzzer1 setEnabled: NO];
+                [self.buzzer2 setEnabled: YES];
                 self.answerField.hidden = YES;
             }
         }
+        // Team 2 ran out of time to answer question. Return to tossup round.
         else if(_state == Team2Answer) {
             _state = TossUp;
             if (_team1answered) {
@@ -164,7 +166,8 @@ typedef enum {
                 _team2answered = YES;
                 [self restartTimerWithTime:_timeLeftForRound];
                 [self.questionDisplay resumeDisplay];
-                [self.buzzer2 setEnabled:NO];
+                [self.buzzer1 setEnabled: YES];
+                [self.buzzer2 setEnabled: NO];
                 self.answerField.hidden = YES;
             }
         }
@@ -238,15 +241,14 @@ typedef enum {
                 _state = TossUp;
                 [self startNextRound];
             }
+            // The team got it wrong but the other team still has a chance. Return to the tossup round.
             else {
                 _state = TossUp;
                 self.answerField.hidden = YES;
-                if (_team2answered) {
-                    [self startNextRound];
-                } else {
-                    [self restartTimerWithTime:_timeLeftForRound];
-                    [self.questionDisplay resumeDisplay];
-                }
+                [self.buzzer2 setEnabled: YES];
+                [self.buzzer1 setEnabled: NO];
+                [self restartTimerWithTime:_timeLeftForRound];
+                [self.questionDisplay resumeDisplay];
             }
             break;
         case Team2Answer:
@@ -262,14 +264,13 @@ typedef enum {
             else {
                 _state = TossUp;
                 self.answerField.hidden = YES;
-                if (_team1answered) {
-                    [self startNextRound];
-                } else {
-                    [self restartTimerWithTime:_timeLeftForRound];
-                    [self.questionDisplay resumeDisplay];
-                }
+                [self.buzzer2 setEnabled: NO];
+                [self.buzzer1 setEnabled: YES];
+                [self restartTimerWithTime:_timeLeftForRound];
+                [self.questionDisplay resumeDisplay];
             }
             break;
+            
         case TossUp:
             [self.questionDisplay pauseDisplay];
             if (teamNumber == 1) {
