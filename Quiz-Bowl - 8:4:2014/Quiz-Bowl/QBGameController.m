@@ -125,6 +125,9 @@ typedef enum {
         // Re-enable both buzzers
         [self.buzzer1 setEnabled:YES];
         [self.buzzer2 setEnabled:YES];
+        
+        // Disable the answer field
+        self.answerField.hidden = YES;
 
         _state = TossUp;
         _currentRound = [self.level getNextTossUp];
@@ -146,9 +149,11 @@ typedef enum {
             if (_team2answered) {
                 [self startNextRound];
             } else {
+                _team1answered = YES;
                 [self restartTimerWithTime:_timeLeftForRound];
                 [self.questionDisplay resumeDisplay];
                 [self.buzzer1 setEnabled:NO];
+                self.answerField.hidden = YES;
             }
         }
         else if(_state == Team2Answer) {
@@ -156,9 +161,11 @@ typedef enum {
             if (_team1answered) {
                 [self startNextRound];
             } else {
+                _team2answered = YES;
                 [self restartTimerWithTime:_timeLeftForRound];
                 [self.questionDisplay resumeDisplay];
                 [self.buzzer2 setEnabled:NO];
+                self.answerField.hidden = YES;
             }
         }
         else if (_state == Team1BonusIntro || _state == Team2BonusIntro) {
@@ -227,7 +234,7 @@ typedef enum {
                 [self startNextRound];
             }
             // Both teams got it wrong, return to the toss up round and start the next toss up.
-            else if (![self.buzzer2 isEnabled]) {
+            else if (_team2answered) {
                 _state = TossUp;
                 [self startNextRound];
             }
@@ -247,7 +254,7 @@ typedef enum {
                 [self startNextRound];
             }
             
-            else if (![self.buzzer1 isEnabled]) {
+            else if (_team1answered) {
                 _state = TossUp;
                 [self startNextRound];
             }
@@ -272,6 +279,7 @@ typedef enum {
                 [self restartTimerWithTime:10];
                 // Show the answer entry view
                 self.answerField.hidden = NO;
+                [self.buzzer2 setEnabled: NO];
             } else {
                 _state = Team2Answer;
                 _timeLeftForRound = _currentTime;
@@ -279,6 +287,7 @@ typedef enum {
                 [self restartTimerWithTime:10];
                 // Display the answer entry view
                 self.answerField.hidden = NO;
+                [self.buzzer1 setEnabled: NO];
             }
         default:
             break;
