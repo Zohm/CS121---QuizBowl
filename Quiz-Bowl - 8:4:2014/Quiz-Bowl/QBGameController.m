@@ -69,6 +69,39 @@ typedef enum {
                                             userInfo:Nil repeats:YES];
 }
 
+-(void) returnToTossUp
+{
+    _state = TossUp;
+    self.answerField.hidden = YES;
+    [self restartTimerWithTime:_timeLeftForRound];
+    [self.questionDisplay resumeDisplay];
+    
+    if (_team1answered) {
+        [self.buzzer1 setEnabled: NO];
+        [self.buzzer2 setEnabled: YES];
+    } else {
+        [self.buzzer2 setEnabled: NO];
+        [self.buzzer1 setEnabled: YES];
+    }
+}
+
+-(void) startBonusIntro
+{
+    
+}
+
+-(void) startNextBonusQuestion
+{
+    
+}
+
+-(void) startNextTossUp
+{
+    // No team has attempted an answer at the start of the round
+    _team1answered = 
+}
+
+
 -(void) startNextRound
 {
     // No team has attempted an answer at the start of the round
@@ -150,11 +183,7 @@ typedef enum {
                 [self startNextRound];
             } else {
                 _team1answered = YES;
-                [self restartTimerWithTime:_timeLeftForRound];
-                [self.questionDisplay resumeDisplay];
-                [self.buzzer1 setEnabled: NO];
-                [self.buzzer2 setEnabled: YES];
-                self.answerField.hidden = YES;
+                [self returnToTossUp];
             }
         }
         // Team 2 ran out of time to answer question. Return to tossup round.
@@ -164,11 +193,7 @@ typedef enum {
                 [self startNextRound];
             } else {
                 _team2answered = YES;
-                [self restartTimerWithTime:_timeLeftForRound];
-                [self.questionDisplay resumeDisplay];
-                [self.buzzer1 setEnabled: YES];
-                [self.buzzer2 setEnabled: NO];
-                self.answerField.hidden = YES;
+                [self returnToTossUp];
             }
         }
         else if (_state == Team1BonusIntro || _state == Team2BonusIntro) {
@@ -243,12 +268,8 @@ typedef enum {
             }
             // The team got it wrong but the other team still has a chance. Return to the tossup round.
             else {
-                _state = TossUp;
-                self.answerField.hidden = YES;
-                [self.buzzer2 setEnabled: YES];
-                [self.buzzer1 setEnabled: NO];
-                [self restartTimerWithTime:_timeLeftForRound];
-                [self.questionDisplay resumeDisplay];
+                _team1answered = YES;
+                [self returnToTossUp];
             }
             break;
         case Team2Answer:
@@ -262,12 +283,8 @@ typedef enum {
             }
             
             else {
-                _state = TossUp;
-                self.answerField.hidden = YES;
-                [self.buzzer2 setEnabled: NO];
-                [self.buzzer1 setEnabled: YES];
-                [self restartTimerWithTime:_timeLeftForRound];
-                [self.questionDisplay resumeDisplay];
+                _team2answered = YES;
+                [self returnToTossUp];
             }
             break;
             
