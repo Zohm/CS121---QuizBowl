@@ -43,6 +43,11 @@
     [self startTimerWith:text];
 }
 
+-(void)resetDisplay
+{
+    self.lblQuestion.text = @""; 
+}
+
 -(void) pauseDisplay
 {
     [_timer invalidate];

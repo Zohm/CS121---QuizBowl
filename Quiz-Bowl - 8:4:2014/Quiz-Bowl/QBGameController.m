@@ -86,9 +86,11 @@ typedef enum {
     if (_state == Team1Answer) {
         _state = Team1BonusIntro;
         _currentRound = [self.level getNextBonus];
+        [self.buzzer1 setEnabled:NO];
         [self.buzzer2 setEnabled:NO]; // No buzzing during the intro!
         float timeToDisplay = [_currentRound.intro length] * timePerChar;
         [self restartTimerWithTime:timeToDisplay];
+        [self.questionDisplay resetDisplay];
         [self.questionDisplay showText:_currentRound.intro];
     }
     
@@ -97,7 +99,9 @@ typedef enum {
         _state = Team2BonusIntro;
         _currentRound = [self.level getNextBonus];
         [self.buzzer1 setEnabled:NO];
+        [self.buzzer2 setEnabled:NO];
         float timeToDisplay = [_currentRound.intro length] * timePerChar;
+        [self.questionDisplay resetDisplay];
         [self restartTimerWithTime:timeToDisplay];
         [self.questionDisplay showText:_currentRound.intro];
     }
@@ -106,13 +110,11 @@ typedef enum {
     else if (_state == Team1BonusIntro) {
         _state = Team1Bonus;
         [self.buzzer1 setEnabled:YES];
-        [self.buzzer2 setEnabled:YES];
     }
     
     // Team 2 finished their bonus round intro. Start bonus round.
     else if (_state == Team2BonusIntro) {
         _state = Team2Bonus;
-        [self.buzzer1 setEnabled:YES];
         [self.buzzer2 setEnabled:YES];
     }
     
@@ -158,6 +160,9 @@ typedef enum {
                 [self.questionDisplay resumeDisplay];
                 [self.buzzer2 setEnabled:NO];
             }
+        }
+        else if (_state == Team1BonusIntro || _state == Team2BonusIntro) {
+            [self startNextRound];
         }
         else if ([_currentRound hasNextQuestion]) {
             [self startQuestion];

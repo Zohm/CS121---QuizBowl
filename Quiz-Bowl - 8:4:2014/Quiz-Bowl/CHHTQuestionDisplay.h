@@ -23,4 +23,6 @@
 
 -(void)resumeDisplay;
 
+-(void)resetDisplay;
+
 @end
