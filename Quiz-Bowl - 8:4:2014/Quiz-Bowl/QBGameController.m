@@ -72,10 +72,15 @@ typedef enum {
 -(void) returnToTossUp
 {
     _state = TossUp;
+    
+    // Hide the answer field
     self.answerField.hidden = YES;
+    
+    // Resume the timer and question display
     [self restartTimerWithTime:_timeLeftForRound];
     [self.questionDisplay resumeDisplay];
     
+    // Enable/disable buzzers appropriately
     if (_team1answered) {
         [self.buzzer1 setEnabled: NO];
         [self.buzzer2 setEnabled: YES];
@@ -85,124 +90,128 @@ typedef enum {
     }
 }
 
--(void) startBonusIntro
+-(void) startBonusRoundForTeam:(NSInteger)team
 {
+    _currentRound = [self.level getNextBonus];
+
+    [self.buzzer1 setEnabled: NO]; // Buzzing in is not allowed during the intro
+    [self.buzzer2 setEnabled: NO];
     
+    // Display the intro text
+    float timeToDisplay = [_currentRound.intro length] * timePerChar;
+    [self.questionDisplay resetDisplay];
+    [self restartTimerWithTime:timeToDisplay];
+    [self.questionDisplay showText:_currentRound.intro];
+    
+    if (team == 1) {
+        _state = Team1BonusIntro;
+    }
+    
+    if (team == 2) {
+        _state = Team2BonusIntro;
+    }
 }
 
 -(void) startNextBonusQuestion
 {
+    self.answerField.hidden = NO;
     
+    if (_state == Team1BonusIntro) {
+        _state = Team1Bonus;
+        [self.buzzer1 setEnabled: YES];
+        [self.buzzer2 setEnabled: NO];
+    }
+    
+    if (_state == Team2BonusIntro) {
+        _state = Team2Bonus;
+        [self.buzzer1 setEnabled: NO];
+        [self.buzzer2 setEnabled: YES];
+    }
+    
+    [self startQuestion];
 }
 
 -(void) startNextTossUp
 {
-    // No team has attempted an answer at the start of the round
-    _team1answered = 
-}
-
-
--(void) startNextRound
-{
+    _state = TossUp;
+    
+    // Hide the answer field
+    self.answerField.hidden = YES;
+    
     // No team has attempted an answer at the start of the round
     _team1answered = NO;
     _team2answered = NO;
     
-    // The game ends when we run out of tossup or bonus questions.
-    if (!([self.level hasNextTossUp] && [self.level hasNextBonus])) {
-        _state = EndGame;
-        // Display the end game screen
-        return;
-    }
+    // Re-enable both buzzers
+    [self.buzzer1 setEnabled: YES];
+    [self.buzzer2 setEnabled: YES];
     
-    // Team 1 answered a tossup. Move onto bonus round.
-    if (_state == Team1Answer) {
-        _state = Team1BonusIntro;
-        _currentRound = [self.level getNextBonus];
-        [self.buzzer1 setEnabled:NO];
-        [self.buzzer2 setEnabled:NO]; // No buzzing during the intro!
-        float timeToDisplay = [_currentRound.intro length] * timePerChar;
-        [self restartTimerWithTime:timeToDisplay];
-        [self.questionDisplay resetDisplay];
-        [self.questionDisplay showText:_currentRound.intro];
-    }
+    // Load the tossup round
+    _currentRound = [self.level getNextTossUp];
     
-    // Team 2 answered a tossup. Move onto bonus round.
-    else if (_state == Team2Answer) {
-        _state = Team2BonusIntro;
-        _currentRound = [self.level getNextBonus];
-        [self.buzzer1 setEnabled:NO];
-        [self.buzzer2 setEnabled:NO];
-        float timeToDisplay = [_currentRound.intro length] * timePerChar;
-        [self.questionDisplay resetDisplay];
-        [self restartTimerWithTime:timeToDisplay];
-        [self.questionDisplay showText:_currentRound.intro];
-    }
-    
-    // Team 1 finished their bonus round intro. Start bonus round.
-    else if (_state == Team1BonusIntro) {
-        _state = Team1Bonus;
-        [self.buzzer1 setEnabled:YES];
-    }
-    
-    // Team 2 finished their bonus round intro. Start bonus round.
-    else if (_state == Team2BonusIntro) {
-        _state = Team2Bonus;
-        [self.buzzer2 setEnabled:YES];
-    }
-    
-    // Either no team answered a tossup or a bonus round finished.
-    // Move onto the next tossup
-    else if(![_currentRound hasNextQuestion])
-    {
-        // Re-enable both buzzers
-        [self.buzzer1 setEnabled:YES];
-        [self.buzzer2 setEnabled:YES];
-        
-        // Disable the answer field
-        self.answerField.hidden = YES;
+    [self startQuestion];
+}
 
-        _state = TossUp;
-        _currentRound = [self.level getNextTossUp];
+-(void) startAnswerModeForTeam:(NSInteger)team
+{
+    [self.questionDisplay pauseDisplay];
+    _timeLeftForRound = _currentTime;
+    
+    // Each team gets 10 seconds after buzzing in to answer
+    [self restartTimerWithTime:10]; // Magic numbers are bad. Get rid of this. 
+    
+    // Show the answer entry view
+    self.answerField.hidden = NO;
+    
+    if (team == 1) {
+        _state = Team1Answer;
+        // Only allow team 1 to buzz in during their chance to answer.
+        [self.buzzer1 setEnabled: YES];
+        [self.buzzer2 setEnabled: NO];
     }
     
-    if (_state != Team1BonusIntro && _state != Team2BonusIntro) {
-        [self startQuestion];
+    else {
+        _state = Team2Answer;
+        [self.buzzer1 setEnabled: NO];
+        [self.buzzer2 setEnabled: YES];
     }
 }
 
 -(void)tick:(NSTimer*)timer
 {
-    // We ran out of time.
-    if (_currentTime <= 0) {
+    if (_currentTime <= 0) { // The timer ran out
         [_timer invalidate];
-        // Ran out of time given to answer question. Return to tossup round.
-        if (_state == Team1Answer) {
-            _state = TossUp;
-            if (_team2answered) {
-                [self startNextRound];
-            } else {
+        if (_state == Team1Answer) { // Team 1 ran out of time while answering a question.
+            
+            if (_team2answered) { // If both teams have attempted an answer, move on to next tossup.
+                [self startNextTossUp];
+            }
+            else { // Otherwise, return to the tossup round
                 _team1answered = YES;
                 [self returnToTossUp];
             }
         }
-        // Team 2 ran out of time to answer question. Return to tossup round.
-        else if(_state == Team2Answer) {
-            _state = TossUp;
+        else if(_state == Team2Answer) { // Team 2 ran out of time to answer a question.
+            
             if (_team1answered) {
-                [self startNextRound];
-            } else {
+                [self startNextTossUp];
+            }
+            else {
                 _team2answered = YES;
                 [self returnToTossUp];
             }
         }
-        else if (_state == Team1BonusIntro || _state == Team2BonusIntro) {
-            [self startNextRound];
+        else if (_state == Team1BonusIntro || _state == Team2BonusIntro) { // Finished bonus intro.
+            [self startNextBonusQuestion];
         }
-        else if ([_currentRound hasNextQuestion]) {
-            [self startQuestion];
-        } else {
-            [self startNextRound];
+        else if ([_currentRound hasNextQuestion]) { // Still in bonus round.
+            [self startNextBonusQuestion];
+        }
+        else if ([self.level hasNextTossUp]){ // Move on to next toss up.
+            [self startNextTossUp];
+        }
+        else {
+            // End the game, move on to end game screen.
         }
     } else {
         --_currentTime;
@@ -215,7 +224,7 @@ typedef enum {
     NSString* answer = self.answerField.text;
     
     // Reset the entry text field
-    self.answerField.text = @"Enter your answer";
+    self.answerField.text = @"";
     
     // Increment scores if the answer is correct
     if ([_currentQuestion doesMatchAnswer:answer] && team == 1) {
@@ -223,20 +232,13 @@ typedef enum {
         [self.hud updateScore:_score1 forTeam:1];
         return YES;
     }
+    
     else if ([_currentQuestion doesMatchAnswer:answer] && team == 2) {
         ++_score2;
         [self.hud updateScore:_score2 forTeam:2];
         return YES;
     }
-    else if (team == 1 && _state == Team1Answer) {
-        // Each team only gets one chance to answer the tossup
-        _team1answered = YES;
-        [self.buzzer1 setEnabled:NO];
-    }
-    else if (team == 2 && _state == Team2Answer) {
-        _team2answered = YES;
-        [self.buzzer2 setEnabled:NO];
-    }
+    
     return NO;
 }
 
@@ -244,72 +246,56 @@ typedef enum {
 {
     // Pause the countdown.
     [_timer invalidate];
+    
+    if (_state == Team1Bonus || _state == Team2Bonus) {
         
-    switch (_state) {
-        case Team1Bonus:
+        if (_state == Team1Bonus) {
             [self checkAnswerForTeam:1];
-            [self.questionDisplay pauseDisplay];
-            [self startNextRound];
-            break;
-        case Team2Bonus:
+        }
+        else {
             [self checkAnswerForTeam:2];
-            [self.questionDisplay pauseDisplay];
-            [self startNextRound];
-            break;
-        case Team1Answer:
-            // The team got it right, start the next round (bonus round)
-            if ([self checkAnswerForTeam:1]) {
-                [self startNextRound];
-            }
-            // Both teams got it wrong, return to the toss up round and start the next toss up.
-            else if (_team2answered) {
-                _state = TossUp;
-                [self startNextRound];
-            }
-            // The team got it wrong but the other team still has a chance. Return to the tossup round.
-            else {
-                _team1answered = YES;
-                [self returnToTossUp];
-            }
-            break;
-        case Team2Answer:
-            if ([self checkAnswerForTeam:2]) {
-                [self startNextRound];
-            }
-            
-            else if (_team1answered) {
-                _state = TossUp;
-                [self startNextRound];
-            }
-            
-            else {
-                _team2answered = YES;
-                [self returnToTossUp];
-            }
-            break;
-            
-        case TossUp:
-            [self.questionDisplay pauseDisplay];
-            if (teamNumber == 1) {
-                _state = Team1Answer;
-                _timeLeftForRound = _currentTime;
-                // Each team gets 10 seconds after buzzing in to answer
-                [self restartTimerWithTime:10];
-                // Show the answer entry view
-                self.answerField.hidden = NO;
-                [self.buzzer2 setEnabled: NO];
-            } else {
-                _state = Team2Answer;
-                _timeLeftForRound = _currentTime;
-                _currentTime = 10;
-                [self restartTimerWithTime:10];
-                // Display the answer entry view
-                self.answerField.hidden = NO;
-                [self.buzzer1 setEnabled: NO];
-            }
-        default:
-            break;
+        }
+        
+        if ([_currentRound hasNextQuestion]) {
+            [self startNextBonusQuestion];
+        }
+        else {
+            [self startNextTossUp];
+        }
     }
+    
+    else if (_state == Team1Answer) {
+        
+        if ([self checkAnswerForTeam:1]) { // Correct answer! Move onto bonus round.
+            [self startBonusRoundForTeam:1];
+        }
+        else if (_team2answered) { // Both teams got it wrong. Move onto next tossup.
+            [self startNextTossUp];
+        }
+        else { // The other team still has a chance. Return to tossup.
+            _team1answered = YES;
+            [self returnToTossUp];
+        }
+    }
+    
+    else if (_state == Team2Answer) {
+        
+        if ([self checkAnswerForTeam:2]) { // Correct answer! Move onto bonus round.
+            [self startBonusRoundForTeam:2];
+        }
+        else if (_team2answered) { // Both teams got it wrong. Move onto next tossup.
+            [self startNextTossUp];
+        }
+        else { // The other team still has a chance. Return to tossup.
+            _team2answered = YES;
+            [self returnToTossUp];
+        }
+    }
+    
+    else if (_state == TossUp) {
+        [self startAnswerModeForTeam:teamNumber];
+    }
+    
 }
 
 @end
