@@ -222,9 +222,16 @@ typedef enum {
             [self startNextRound];
             break;
         case Team1Answer:
+            // The team got it right, start the next round (bonus round)
             if ([self checkAnswerForTeam:1]) {
                 [self startNextRound];
-            } else {
+            }
+            // Both teams got it wrong, return to the toss up round and start the next toss up.
+            else if (![self.buzzer2 isEnabled]) {
+                _state = TossUp;
+                [self startNextRound];
+            }
+            else {
                 _state = TossUp;
                 self.answerField.hidden = YES;
                 if (_team2answered) {
@@ -236,7 +243,7 @@ typedef enum {
             }
             break;
         case Team2Answer:
-            if ([self checkAnswerForTeam:2]) {
+            if ([self checkAnswerForTeam:2] || ![self.buzzer1 isEnabled]) {
                 [self startNextRound];
             } else {
                 _state = TossUp;
