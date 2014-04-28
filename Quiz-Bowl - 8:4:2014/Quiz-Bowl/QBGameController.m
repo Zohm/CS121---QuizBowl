@@ -9,6 +9,7 @@
 #import "QBGameController.h"
 #import "QBRound.h"
 #import "CHHTPlayViewController.h"
+#import "QBMainModeEndScreen.h"
 
 // Defines the possible states the game can be in.
 typedef enum {
@@ -34,6 +35,25 @@ typedef enum {
     NSInteger _score2;
     BOOL _team1answered;
     BOOL _team2answered;
+}
+
+-(instancetype)init{
+    self = [super init];
+    if (self) {
+        self.audioController = [[QBAudioController alloc] init];
+        [self.audioController preloadAudioEffects: kAudioEffectFiles];
+    }
+    return self;
+}
+
+// Public getters
+-(NSInteger) getScoreForTeam:(NSInteger)team
+{
+    if (team == 1) {
+        return _score1;
+    } else {
+        return _score2;
+    }
 }
 
 // Game control flow
@@ -100,7 +120,7 @@ typedef enum {
     // Display the intro text
     float timeToDisplay = [_currentRound.intro length] * timePerChar;
     [self.questionDisplay resetDisplay];
-    [self restartTimerWithTime:timeToDisplay];
+    [self restartTimerWithTime:timeToDisplay + introPauseTime];
     [self.questionDisplay showText:_currentRound.intro];
     
     if (team == 1) {
@@ -154,11 +174,13 @@ typedef enum {
 
 -(void) startAnswerModeForTeam:(NSInteger)team
 {
-    [self.questionDisplay pauseDisplay];
     _timeLeftForRound = _currentTime;
     
-    // Each team gets 10 seconds after buzzing in to answer
-    [self restartTimerWithTime:10]; // Magic numbers are bad. Get rid of this. 
+    // Play buzzer sound
+    [self.audioController playEffect:BuzzerSound];
+    
+    // Each team gets some time after buzzing in to answer
+    [self restartTimerWithTime: timeToAnswer];
     
     // Show the answer entry view
     self.answerField.hidden = NO;
@@ -212,6 +234,7 @@ typedef enum {
         }
         else {
             // End the game, move on to end game screen.
+            [self.viewController gameIsFinished];
         }
     } else {
         --_currentTime;
@@ -228,17 +251,19 @@ typedef enum {
     
     // Increment scores if the answer is correct
     if ([_currentQuestion doesMatchAnswer:answer] && team == 1) {
-        ++_score1;
+        [self.audioController playEffect: RightAnswerSound];
+        _score1 += pointsPerQuestion;
         [self.hud updateScore:_score1 forTeam:1];
         return YES;
     }
     
     else if ([_currentQuestion doesMatchAnswer:answer] && team == 2) {
-        ++_score2;
+        [self.audioController playEffect: RightAnswerSound];
+        _score2 += pointsPerQuestion;
         [self.hud updateScore:_score2 forTeam:2];
         return YES;
     }
-    
+    [self.audioController playEffect:WrongAnswerSound];
     return NO;
 }
 
@@ -246,6 +271,9 @@ typedef enum {
 {
     // Pause the countdown.
     [_timer invalidate];
+    
+    // Pause the text display
+    [self.questionDisplay pauseDisplay];
     
     if (_state == Team1Bonus || _state == Team2Bonus) {
         
@@ -259,8 +287,11 @@ typedef enum {
         if ([_currentRound hasNextQuestion]) {
             [self startNextBonusQuestion];
         }
-        else {
+        else if ([self.level hasNextTossUp]){
             [self startNextTossUp];
+        }
+        else {
+            [self.viewController gameIsFinished];
         }
     }
     
@@ -270,7 +301,11 @@ typedef enum {
             [self startBonusRoundForTeam:1];
         }
         else if (_team2answered) { // Both teams got it wrong. Move onto next tossup.
-            [self startNextTossUp];
+            if ([self.level hasNextTossUp]) {
+                [self startNextTossUp];
+            } else {
+                [self.viewController gameIsFinished];
+            }
         }
         else { // The other team still has a chance. Return to tossup.
             _team1answered = YES;
@@ -283,8 +318,12 @@ typedef enum {
         if ([self checkAnswerForTeam:2]) { // Correct answer! Move onto bonus round.
             [self startBonusRoundForTeam:2];
         }
-        else if (_team2answered) { // Both teams got it wrong. Move onto next tossup.
-            [self startNextTossUp];
+        else if (_team1answered) { // Both teams got it wrong. Move onto next tossup.
+            if ([self.level hasNextTossUp]) {
+                [self startNextTossUp];
+            } else {
+                [self.viewController gameIsFinished];
+            }
         }
         else { // The other team still has a chance. Return to tossup.
             _team2answered = YES;

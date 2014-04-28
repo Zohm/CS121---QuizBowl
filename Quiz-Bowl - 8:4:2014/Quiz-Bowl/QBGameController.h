@@ -13,6 +13,8 @@
 #import "QBLevel.h" 
 #import "CHHTQuestionDisplay.h"
 #import "CHHTHUDView.h"
+#import "QBGameControllerDelegate.h"
+#import "QBAudioController.h"
 #import "config.h"
 
 @interface QBGameController : NSObject
@@ -28,6 +30,12 @@
 @property (strong, nonatomic) CHHTQuestionDisplay* questionDisplay; 
 
 @property (strong, nonatomic) QBLevel* level;
+
+@property (weak, nonatomic) id<QBGameControllerDelegate> viewController;
+
+@property (strong, nonatomic) QBAudioController* audioController;
+
+-(NSInteger) getScoreForTeam:(NSInteger)team;
 
 -(void) beginGame;
 

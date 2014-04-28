@@ -42,6 +42,12 @@
 		D82F185E18FB34C20082710A /* QBRound.m in Sources */ = {isa = PBXBuildFile; fileRef = D82F185B18FB34C20082710A /* QBRound.m */; };
 		D82F186018FB35C50082710A /* testquestions.plist in Resources */ = {isa = PBXBuildFile; fileRef = D82F185F18FB35C50082710A /* testquestions.plist */; };
 		D82F186318FB44930082710A /* CHHTQuestionDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = D82F186218FB44930082710A /* CHHTQuestionDisplay.m */; };
+		D82F1866190DB3F40082710A /* QBMainModeEndScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = D82F1865190DB3F40082710A /* QBMainModeEndScreen.m */; };
+		D82F186A190DCD9A0082710A /* QBAudioController.m in Sources */ = {isa = PBXBuildFile; fileRef = D82F1869190DCD9A0082710A /* QBAudioController.m */; };
+		D82F186C190DCF5C0082710A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D82F186B190DCF5C0082710A /* AVFoundation.framework */; };
+		D82F1877190DD2910082710A /* buzz.wav in Resources */ = {isa = PBXBuildFile; fileRef = D82F1876190DD2910082710A /* buzz.wav */; };
+		D82F187C190DD29D0082710A /* wrong.wav in Resources */ = {isa = PBXBuildFile; fileRef = D82F187A190DD29D0082710A /* wrong.wav */; };
+		D82F187D190DD29D0082710A /* yay.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D82F187B190DD29D0082710A /* yay.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,6 +118,15 @@
 		D82F185F18FB35C50082710A /* testquestions.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = testquestions.plist; sourceTree = "<group>"; };
 		D82F186118FB44930082710A /* CHHTQuestionDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHHTQuestionDisplay.h; sourceTree = "<group>"; };
 		D82F186218FB44930082710A /* CHHTQuestionDisplay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHHTQuestionDisplay.m; sourceTree = "<group>"; };
+		D82F1864190DB3EC0082710A /* QBMainModeEndScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBMainModeEndScreen.h; sourceTree = "<group>"; };
+		D82F1865190DB3F40082710A /* QBMainModeEndScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QBMainModeEndScreen.m; sourceTree = "<group>"; };
+		D82F1867190DB9D40082710A /* QBGameControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBGameControllerDelegate.h; sourceTree = "<group>"; };
+		D82F1868190DCD9A0082710A /* QBAudioController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBAudioController.h; sourceTree = "<group>"; };
+		D82F1869190DCD9A0082710A /* QBAudioController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QBAudioController.m; sourceTree = "<group>"; };
+		D82F186B190DCF5C0082710A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		D82F1876190DD2910082710A /* buzz.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = buzz.wav; sourceTree = "<group>"; };
+		D82F187A190DD29D0082710A /* wrong.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = wrong.wav; sourceTree = "<group>"; };
+		D82F187B190DD29D0082710A /* yay.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = yay.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +134,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D82F186C190DCF5C0082710A /* AVFoundation.framework in Frameworks */,
 				C2B66B2118BB40B800691A0A /* UIKit.framework in Frameworks */,
 				C2B66B2318BB40B800691A0A /* Foundation.framework in Frameworks */,
 				C2B66B2518BB40B800691A0A /* CoreGraphics.framework in Frameworks */,
@@ -168,6 +184,7 @@
 		C2B66B1F18BB40B800691A0A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D82F186B190DCF5C0082710A /* AVFoundation.framework */,
 				C2B66B2018BB40B800691A0A /* UIKit.framework */,
 				C2B66B2218BB40B800691A0A /* Foundation.framework */,
 				C2B66B2418BB40B800691A0A /* CoreGraphics.framework */,
@@ -179,6 +196,8 @@
 		C2B66B2618BB40B800691A0A /* Quiz-Bowl */ = {
 			isa = PBXGroup;
 			children = (
+				D82F1865190DB3F40082710A /* QBMainModeEndScreen.m */,
+				D82F1864190DB3EC0082710A /* QBMainModeEndScreen.h */,
 				C297F4E118C531CA004E0578 /* config.h */,
 				C2B66B5B18BB41BD00691A0A /* Questions */,
 				C2B66B5718BB40D600691A0A /* Models */,
@@ -235,6 +254,9 @@
 				D82F184B18FB34380082710A /* QBGameController.m */,
 				C28D14C418C5C21A008BB632 /* CHHTGameController.h */,
 				C28D14C518C5C21A008BB632 /* CHHTGameController.m */,
+				D82F1867190DB9D40082710A /* QBGameControllerDelegate.h */,
+				D82F1868190DCD9A0082710A /* QBAudioController.h */,
+				D82F1869190DCD9A0082710A /* QBAudioController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -282,6 +304,7 @@
 		C2B66B5818BB410400691A0A /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				D82F186D190DD1130082710A /* Audio */,
 				C297F4E218C53865004E0578 /* Fonts */,
 			);
 			name = Assets;
@@ -295,6 +318,16 @@
 				C29123CF18BD3CA100447689 /* PracticeQuestions.plist */,
 			);
 			name = Questions;
+			sourceTree = "<group>";
+		};
+		D82F186D190DD1130082710A /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				D82F187A190DD29D0082710A /* wrong.wav */,
+				D82F187B190DD29D0082710A /* yay.mp3 */,
+				D82F1876190DD2910082710A /* buzz.wav */,
+			);
+			name = Audio;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -374,9 +407,12 @@
 				C2B66B3518BB40B800691A0A /* Default@2x.png in Resources */,
 				C2B66B3718BB40B900691A0A /* Default-568h@2x.png in Resources */,
 				C2B66B5A18BB415300691A0A /* Storyboard.storyboard in Resources */,
+				D82F1877190DD2910082710A /* buzz.wav in Resources */,
 				C29123CE18BD3C4900447689 /* Question.plist in Resources */,
 				C29123D018BD3CA100447689 /* PracticeQuestions.plist in Resources */,
+				D82F187D190DD29D0082710A /* yay.mp3 in Resources */,
 				D82F186018FB35C50082710A /* testquestions.plist in Resources */,
+				D82F187C190DD29D0082710A /* wrong.wav in Resources */,
 				C28D14C318C5B782008BB632 /* Comic_Andy.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -415,6 +451,7 @@
 				D82F185418FB349E0082710A /* QBEnterAnswerView.m in Sources */,
 				C2B66B2D18BB40B800691A0A /* main.m in Sources */,
 				C2B66B3118BB40B800691A0A /* CHHTAppDelegate.m in Sources */,
+				D82F186A190DCD9A0082710A /* QBAudioController.m in Sources */,
 				D82F185518FB349E0082710A /* QBHudView.m in Sources */,
 				C29123C918BD2E7000447689 /* CHHTViewController.m in Sources */,
 				C29123CC18BD306500447689 /* CHHTPlayViewController.m in Sources */,
@@ -426,6 +463,7 @@
 				C28D14C618C5C21A008BB632 /* CHHTGameController.m in Sources */,
 				D82F185D18FB34C20082710A /* QBQuestion.m in Sources */,
 				C29212A418CD6A6700ED3F10 /* CHHTPracticeEndScreenViewController.m in Sources */,
+				D82F1866190DB3F40082710A /* QBMainModeEndScreen.m in Sources */,
 				C2883BD518F2089500BC8CD9 /* CHHTGameData.m in Sources */,
 				C29AF40D18F293BF0035E8EF /* CHHTCounterLabelView.m in Sources */,
 				D82F185C18FB34C20082710A /* QBLevel.m in Sources */,

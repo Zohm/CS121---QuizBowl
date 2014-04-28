@@ -237,7 +237,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gmS-XT-syH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="768" y="102"/>
+            <point key="canvasLocation" x="784" y="50"/>
         </scene>
         <!--Practice End Screen View Controller - PracticeEndScreen-->
         <scene sceneID="dWk-m7-wSl">
@@ -391,6 +391,40 @@
             </objects>
             <point key="canvasLocation" x="-516" y="-1226"/>
         </scene>
+        <!--Main Mode End Screen View Controller - MainModeEndScreen-->
+        <scene sceneID="VNj-sR-IQt">
+            <objects>
+                <viewController storyboardIdentifier="MainModeEndScreen" title="MainModeEndScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Qk6-AX-H2F" customClass="QBMainModeEndScreenViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Gpu-WX-vhs">
+                        <rect key="frame" x="0.0" y="20" width="1024" height="748"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bgX-03-dKX">
+                                <rect key="frame" x="116" y="74" width="760" height="257"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="RbK-f5-v6e">
+                                <rect key="frame" x="116" y="386" width="760" height="177"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <connections>
+                        <outlet property="lblLoosingTeam" destination="RbK-f5-v6e" id="r73-eM-woy"/>
+                        <outlet property="lblWinningTeam" destination="bgX-03-dKX" id="nW2-9l-FfU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1zr-Iv-w1d" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="791" y="-1186"/>
+        </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
@@ -398,7 +432,7 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="KRY-5s-22e"/>
         <segue reference="xjQ-J5-WWb"/>
-        <segue reference="0u1-F5-kac"/>
     </inferredMetricsTieBreakers>
 </document>

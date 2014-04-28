@@ -66,7 +66,7 @@
 -(void)countTo:(int)to withDuration:(float)t
 {
     //Detect the time for the animation
-    delta = t/((abs(to - self.value) + 1)/5);
+    delta = t/((abs(to - self.value) + 1)/1);
     //make sure the counter does no go to fast, which would prevent the user to correctly see the numbers changing.
     if (delta < 0.1) delta = 0.1;
     
@@ -80,12 +80,12 @@
     if (to-self.value>0)
     {
         //Count up
-        [self updateValueBy: @5];
+        [self updateValueBy: @1];
     }
     else
     {
         //Count down
-        [self updateValueBy: @-5];
+        [self updateValueBy: @-1];
     }
 }
 

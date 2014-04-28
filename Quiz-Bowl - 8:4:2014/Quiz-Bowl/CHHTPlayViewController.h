@@ -11,8 +11,9 @@
 #import "CHHTGameController.h"
 #import "CHHTGameData.h"
 #import "QBGameController.h"
+#import "QBGameControllerDelegate.h"
 
-@interface CHHTPlayViewController : UIViewController
+@interface CHHTPlayViewController : UIViewController<QBGameControllerDelegate>
 {
     int indexLetter;
     NSTimer *_timer;

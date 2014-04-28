@@ -9,6 +9,7 @@
 #import "CHHTPlayViewController.h"
 #import "config.h"
 #import "CHHTimerView.h"
+#import "QBMainModeEndScreen.h"
 #include "math.h"
 
 @interface CHHTPlayViewController ()
@@ -84,8 +85,21 @@
     // Set up the level
     self.controller.level = [QBLevel levelWithName:@"testquestions"];
     
+    // Create delegation relationship between game and view controllers
+    self.controller.viewController = self;
+    
     // Start the game
     [self.controller beginGame];
+}
+
+-(void) gameIsFinished
+{
+    // Display the end game screen
+    QBMainModeEndScreenViewController *endView = [self.storyboard instantiateViewControllerWithIdentifier:@"MainModeEndScreen"];
+    endView.scoreTeamA = [self.controller getScoreForTeam:1];
+    endView.scoreTeamB = [self.controller getScoreForTeam:2];
+    endView.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    [self presentViewController:endView animated:YES completion:NULL];
 }
 
 -(IBAction)buzzTeam1:(id)sender

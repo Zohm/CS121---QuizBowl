@@ -23,7 +23,24 @@
 // Display speed (time per character)
 #define timePerChar 0.05f
 
+// Pause time after bonus intro is displayed
+#define introPauseTime 1.0f
+
 // Time to buzz in after question is displayed
-#define timeToBuzz 10
+#define timeToBuzz 5.0f
+
+// Time to answer after buzzing in
+#define timeToAnswer 7.0f
+
+// Points per question
+#define pointsPerQuestion 10
+
+// Audio sounds files
+#define RightAnswerSound  @"yay.mp3"
+#define WrongAnswerSound @"wrong.wav"
+#define BuzzerSound   @"buzz.wav"
+#define CheerSound  @"cheer.flac"
+
+#define kAudioEffectFiles @[RightAnswerSound, WrongAnswerSound, BuzzerSound]
 
 #endif
