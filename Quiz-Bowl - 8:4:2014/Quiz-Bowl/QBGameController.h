@@ -39,6 +39,8 @@
 
 -(void) beginGame;
 
+-(void) stopGame; 
+
 -(void) actionBuzzTeam:(NSInteger)teamNumber;
 
 @end

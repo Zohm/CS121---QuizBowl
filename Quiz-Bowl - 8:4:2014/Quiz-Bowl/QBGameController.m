@@ -66,6 +66,12 @@ typedef enum {
     [self startQuestion];
 }
 
+-(void) stopGame
+{
+    // Invalidate the timer
+    [_timer invalidate];
+}
+
 -(void) startQuestion
 {
     _currentQuestion = [_currentRound getNextQuestion];

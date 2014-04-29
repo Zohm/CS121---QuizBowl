@@ -51,6 +51,9 @@
 -(IBAction)buzzTeam1:(id)sender;
 -(IBAction)buzzTeam2:(id)sender;
 
+// Back button selector
+-(IBAction)returnToMenu:(id)sender;
+
 //function to calculate the number of points scored for a question
 - (int) pointScoredWithXSecondsLeft: (int) secondsLeft;
 

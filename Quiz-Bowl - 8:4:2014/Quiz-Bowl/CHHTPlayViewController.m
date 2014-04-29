@@ -43,6 +43,11 @@
     }
 }
 
+- (IBAction) returnToMenu:(id)sender
+{
+    [self.controller stopGame];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
