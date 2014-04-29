@@ -48,6 +48,7 @@
 		D82F1877190DD2910082710A /* buzz.wav in Resources */ = {isa = PBXBuildFile; fileRef = D82F1876190DD2910082710A /* buzz.wav */; };
 		D82F187C190DD29D0082710A /* wrong.wav in Resources */ = {isa = PBXBuildFile; fileRef = D82F187A190DD29D0082710A /* wrong.wav */; };
 		D82F187D190DD29D0082710A /* yay.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D82F187B190DD29D0082710A /* yay.mp3 */; };
+		D877BECF190F5F420048C816 /* highscores.plist in Resources */ = {isa = PBXBuildFile; fileRef = D877BECE190F5F420048C816 /* highscores.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -127,6 +128,7 @@
 		D82F1876190DD2910082710A /* buzz.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = buzz.wav; sourceTree = "<group>"; };
 		D82F187A190DD29D0082710A /* wrong.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = wrong.wav; sourceTree = "<group>"; };
 		D82F187B190DD29D0082710A /* yay.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = yay.mp3; sourceTree = "<group>"; };
+		D877BECE190F5F420048C816 /* highscores.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = highscores.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -297,6 +299,7 @@
 				D82F185B18FB34C20082710A /* QBRound.m */,
 				C2883BD318F2089500BC8CD9 /* CHHTGameData.h */,
 				C2883BD418F2089500BC8CD9 /* CHHTGameData.m */,
+				D877BECE190F5F420048C816 /* highscores.plist */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -406,6 +409,7 @@
 				C2B66B3318BB40B800691A0A /* Default.png in Resources */,
 				C2B66B3518BB40B800691A0A /* Default@2x.png in Resources */,
 				C2B66B3718BB40B900691A0A /* Default-568h@2x.png in Resources */,
+				D877BECF190F5F420048C816 /* highscores.plist in Resources */,
 				C2B66B5A18BB415300691A0A /* Storyboard.storyboard in Resources */,
 				D82F1877190DD2910082710A /* buzz.wav in Resources */,
 				C29123CE18BD3C4900447689 /* Question.plist in Resources */,

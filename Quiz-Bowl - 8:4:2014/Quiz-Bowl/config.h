@@ -30,7 +30,7 @@
 #define timeToBuzz 5.0f
 
 // Time to answer after buzzing in
-#define timeToAnswer 7.0f
+#define timeToAnswer 13.0f
 
 // Points per question
 #define pointsPerQuestion 10

@@ -56,6 +56,64 @@ typedef enum {
     }
 }
 
+- (void) newHighScore: (NSString*) path withScoreA: (int) scoreA withNameA: (NSString*) nameTeamA
+        andScoreTeamB: (int) scoreB withNameB: (NSString*) nameTeamB
+{
+	NSNumber* scoreTeamA = [NSNumber numberWithInt:scoreA];
+    NSNumber* scoreTeamB = [NSNumber numberWithInt:scoreB];
+    
+    //get the current high scores
+	NSDictionary* highScoreDic = [NSDictionary dictionaryWithContentsOfFile: path];
+	NSArray* highScoreTab = [[NSArray alloc] initWithArray:[highScoreDic objectForKey:@"Scores"]];
+	NSArray* highScoreNameTab = [[NSArray alloc] initWithArray:[highScoreDic objectForKey:@"TeamNames"]];
+    
+	//go through them to see if a new high scores has been scored
+	int positionA = -1, positionB = -1;
+	for(int i = 0; i < 10; i++)
+	{
+		if(scoreTeamA > highScoreTab[i] && scoreTeamA == [NSNumber numberWithInt:-1])
+			positionA = i;
+		if(scoreTeamB > highScoreTab[i] && scoreTeamB == [NSNumber numberWithInt:-1])
+			positionB = i;
+	}
+    
+	//if a new high score needs to be added
+	if(positionA != -1 || positionB != -1)
+	{
+		//if both teams scored a new high score hat needs to be inserted
+		//at the same position, then we make sure they are inserted in the
+		//good order
+		if (positionA == positionB && scoreTeamA >= scoreTeamB)
+			positionB++;
+		else if (positionA == positionB && scoreTeamA < scoreTeamB)
+			positionA++;
+        
+		//creation of the new high scores
+		NSMutableArray* newHighScoreTab = [[NSMutableArray alloc] init];
+		NSMutableArray* newHighScoreNameTab = [[NSMutableArray alloc] init];
+		int offset = 0;
+		for(int i = 0; i < 10; i++)
+		{
+			if (i == positionA)	{
+                [newHighScoreNameTab replaceObjectAtIndex:i withObject:scoreTeamA];
+				newHighScoreNameTab[i] = nameTeamA;
+				offset++;
+			}
+			else if (i == positionB) {
+				newHighScoreTab[i] = scoreTeamB;
+				newHighScoreNameTab[i] = nameTeamB;
+				offset++;
+			} //the offset is in case a new score as be inserted before.
+			else {
+				newHighScoreTab[i] = highScoreTab[i - offset];
+				newHighScoreNameTab[i] = highScoreNameTab[i - offset];
+			}
+		}
+		NSDictionary* newHighScoreDic = [NSDictionary dictionaryWithObjectsAndKeys: newHighScoreTab, @"Scores", newHighScoreNameTab, @"TeamNames", nil];
+		[newHighScoreDic writeToFile: path atomically: YES];
+	}
+}
+
 // Game control flow
 
 -(void) beginGame

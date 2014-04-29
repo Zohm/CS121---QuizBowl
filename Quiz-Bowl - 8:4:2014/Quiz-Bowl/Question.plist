@@ -22,7 +22,7 @@
 		</array>
 	</array>
 	<key>timeToSolve</key>
-	<integer>45</integer>
+	<integer>55</integer>
 	<key>pointPerQuestion</key>
 	<integer>100</integer>
 </dict>
